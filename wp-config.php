@@ -4,9 +4,9 @@
  * Use an uncommitted local config file when not on Pantheon.
  */
 
-if ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) && file_exists( __DIR__ . '/wp-local-config.php' ) ) {
+if ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) && file_exists( __DIR__ . '/wp-config-local.php' ) ) {
 	// Local config, not on Patheon.
-	require_once( __DIR__ . '/wp-local-config.php' );
+	require_once( __DIR__ . '/wp-config-local.php' );
 } elseif ( isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
 	// On Pantheon.
 	/**
