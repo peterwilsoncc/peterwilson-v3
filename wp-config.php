@@ -14,6 +14,8 @@ if ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) && file_exists( __DIR__ . '/wp-con
 	 */
 } else {
 	// No local config, no Pantheon.
+	// I'm dead.
+	exit( 'No WordPress config found' );
 }
 
 /**
