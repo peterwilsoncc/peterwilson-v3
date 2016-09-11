@@ -1,0 +1,25 @@
+.htaccess
+xmlrpc.php
+blogs.dir/
+upgrade/
+sitemap.xml
+sitemap.xml.gz
+uploads/
+wpremote
+*-backups
+/node_modules/
+chassis
+
+### WordPress local dev ###
+wp-config-local.php
+*.log
+hm-dev/
+ignore/
+
+### OS and Software generated files ###
+.DS_Store
+ehthumbs.db
+Thumbs.db
+._*
+.idea/
+
