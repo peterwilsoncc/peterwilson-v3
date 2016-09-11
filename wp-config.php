@@ -37,8 +37,11 @@ defined( 'WP_DEBUG' )         || define( 'WP_DEBUG', false );
 defined( 'WP_DEBUG_DISPLAY' ) || define( 'WP_DEBUG_DISPLAY', false );
 defined( 'WP_DEBUG_LOG' )     || define( 'WP_DEBUG_LOG', false );
 
-
-
+/**
+ * Miscellaneous config settings.
+ */
+defined( 'WP_POST_REVISIONS' ) || define( 'WP_POST_REVISIONS', 3 );
+defined( 'FORCE_SSL_ADMIN' )   || define( 'FORCE_SSL_ADMIN', true );
 
 /* That's all, stop editing! Happy Pressing. */
 
