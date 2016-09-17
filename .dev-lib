@@ -1,0 +1,4 @@
+#!/bin/bash
+
+WPCS_STANDARD=WordPress-Extra
+PATH_INCLUDES="wp-content"
