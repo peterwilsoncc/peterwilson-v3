@@ -1,0 +1,14 @@
+# Paths
+paths:
+    # Base directory for reference. Relative to the Chassis directory.
+    base: ..
+
+    # Where WordPress lives. Relative to the base directory.
+    wp: .
+
+    # Content directory. Relative to the base directory.
+    content: wp-content
+
+# PHP version
+# Values: 5.3, 5.4, 5.5, 5.6 (or e.g. 5.3.3)
+php: 5.6
