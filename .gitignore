@@ -1,0 +1,17 @@
+/chassis
+
+/local-config.php
+/sql-dump-*.sql
+.DS_Store
+.idea
+
+# Files and folders related to build/test tools
+/node_modules
+/npm-debug.log
+/wp-cli.local.yml
+
+# Files and folders that get created in wp-content
+/wp-content/blogs.dir
+/wp-content/languages
+/wp-content/upgrade
+/wp-content/uploads
