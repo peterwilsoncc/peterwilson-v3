@@ -45,6 +45,12 @@ defined( 'WP_DEBUG_LOG' )     || define( 'WP_DEBUG_LOG', false );
 defined( 'WP_POST_REVISIONS' ) || define( 'WP_POST_REVISIONS', 3 );
 defined( 'FORCE_SSL_ADMIN' )   || define( 'FORCE_SSL_ADMIN', true );
 
+/**
+ * Directories.
+ */
+defined( 'WP_CONTENT_DIR' )  || define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
+defined( 'WPMU_PLUGIN_DIR' ) || define( 'WPMU_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins-mu' );
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
