@@ -1,6 +1,6 @@
 /chassis
 
-/local-config.php
+/wp-config-local.php
 /sql-dump-*.sql
 .DS_Store
 .idea
