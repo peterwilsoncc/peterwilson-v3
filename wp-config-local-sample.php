@@ -14,3 +14,8 @@ defined( 'DB_HOST' )     || define( 'DB_HOST', 'localhost' );
 defined( 'WP_DEBUG' )         || define( 'WP_DEBUG', true );
 defined( 'WP_DEBUG_DISPLAY' ) || define( 'WP_DEBUG_DISPLAY', true );
 defined( 'WP_DEBUG_LOG' )     || define( 'WP_DEBUG_LOG', true );
+
+/**
+ * Unsafe.
+ */
+defined( 'FORCE_SSL_ADMIN' )   || define( 'FORCE_SSL_ADMIN', false );
