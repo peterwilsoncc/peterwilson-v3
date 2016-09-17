@@ -19,3 +19,10 @@ defined( 'WP_DEBUG_LOG' )     || define( 'WP_DEBUG_LOG', true );
  * Unsafe.
  */
 defined( 'FORCE_SSL_ADMIN' )   || define( 'FORCE_SSL_ADMIN', false );
+
+/**
+ * Chassis Extensions
+ */
+if ( file_exists( __DIR__ . '/chassis-local-config-extensions.php' ) ) {
+	require_once __DIR__ . '/chassis-local-config-extensions.php';
+}
