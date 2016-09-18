@@ -2,10 +2,20 @@
 
 $_SERVER['HTTP_HOST'] = 'localhost';
 
-define( 'DB_NAME', 'wordpress_test' );
-define( 'DB_USER', 'root' );
-define( 'DB_PASSWORD', 'password' );
-define( 'DB_HOST', 'localhost' );
+if ( isset( $_SERVER['TRAVIS'] ) && 'true' === $_SERVER['TRAVIS'] ) {
+	// Travis CI environment.
+	define( 'DB_NAME', 'wordpress_test' );
+	define( 'DB_USER', 'root' );
+	define( 'DB_PASSWORD', '' );
+	define( 'DB_HOST', 'localhost' );
+} else {
+	// Dev environment (probably).
+	define( 'DB_NAME', 'wordpress_test' );
+	define( 'DB_USER', 'root' );
+	define( 'DB_PASSWORD', 'password' );
+	define( 'DB_HOST', 'localhost' );
+}
+
 $table_prefix = 'wptests_';
 
 define( 'WP_TESTS_DOMAIN', 'localhost' );
