@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/peterwilsoncc/peterwilson-v3.svg?branch=master)](https://travis-ci.org/peterwilsoncc/peterwilson-v3)
+
 ## Set up for local development
 
 Run the following commands
