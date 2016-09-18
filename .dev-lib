@@ -1,5 +1,5 @@
 #!/bin/bash
 
 WPCS_STANDARD=WordPress-Extra
-PATH_INCLUDES="wp-content"
+PATH_INCLUDES="wp-content/plugins-mu wp-content/plugins/pwcc-* wp-content/themes/pwcc-* wp-content/plugins/peterwilsoncc-* wp-content/themes/peterwilsoncc-*"
 CHECK_SCOPE=all
