@@ -22,5 +22,9 @@ script:
 after_script:
     - source $DEV_LIB_PATH/travis.after_script.sh
 
+branches:
+  only:
+    - master
+
 notifications:
     email: false
