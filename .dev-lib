@@ -2,3 +2,4 @@
 
 WPCS_STANDARD=WordPress-Extra
 PATH_INCLUDES="wp-content"
+CHECK_SCOPE=all
