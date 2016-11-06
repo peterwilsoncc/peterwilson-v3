@@ -69,7 +69,7 @@ add_action( 'pre_current_active_plugins', function () use ( $hm_mu_plugins ) {
 } );
 
 add_action( 'network_admin_plugin_action_links', function ( $actions, $plugin_file, $plugin_data, $context ) use ( $hm_mu_plugins ) {
-	if ( 'mustuse' !== $context || ! in_array( $plugin_file, $hm_mu_plugins ) ) {
+	if ( 'mustuse' !== $context || ! in_array( $plugin_file, $hm_mu_plugins, true ) ) {
 		return;
 	}
 
