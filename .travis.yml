@@ -11,6 +11,10 @@ php:
 env:
     - WP_VERSION=latest WP_MULTISITE=0
 
+matrix:
+    allow_failures:
+    - php: 7.0
+
 install:
     - export DEV_LIB_PATH=dev-lib
     - if [ ! -e "$DEV_LIB_PATH" ] && [ -L .travis.yml ]; then export DEV_LIB_PATH=$( dirname $( readlink .travis.yml ) ); fi
