@@ -13,6 +13,9 @@ if ( ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) ) {
 }
 
 $hm_mu_plugins = array(
+	'vendor/extended-cpts/extended-cpts.php',
+	'vendor/extended-taxos/extended-taxos.php',
+	'vendor/extended-template-parts/extended-template-parts.php',
 );
 
 foreach ( $hm_mu_plugins as $file ) {
