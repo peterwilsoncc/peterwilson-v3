@@ -13,6 +13,7 @@ if ( ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) ) {
 }
 
 $hm_mu_plugins = array(
+	'vendor/custom-meta-boxes/custom-meta-boxes.php',
 	'vendor/extended-cpts/extended-cpts.php',
 	'vendor/extended-taxos/extended-taxos.php',
 	'vendor/extended-template-parts/extended-template-parts.php',

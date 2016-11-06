@@ -11,3 +11,6 @@
 [submodule "wp-content/plugins-mu/vendor/extended-template-parts"]
 	path = wp-content/plugins-mu/vendor/extended-template-parts
 	url = https://github.com/johnbillion/extended-template-parts.git
+[submodule "wp-content/plugins-mu/vendor/custom-meta-boxes"]
+	path = wp-content/plugins-mu/vendor/custom-meta-boxes
+	url = https://github.com/humanmade/Custom-Meta-Boxes.git
