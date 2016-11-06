@@ -1,8 +1,5 @@
 sudo: false
 
-language:
-    - node_js
-
 env:
     - WP_VERSION=latest WP_MULTISITE=0
 
@@ -12,8 +9,6 @@ matrix:
     - php: 7.0
     allow_failures:
     - php: 7.0
-    exlude:
-    - php: 5.5
 
 install:
     - export DEV_LIB_PATH=dev-lib
