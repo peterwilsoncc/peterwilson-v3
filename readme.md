@@ -10,6 +10,7 @@ Run the following commands
 	cp bin/config.local.yaml chassis
 	cp wp-config-local-sample.php wp-config-local.php
 	cd chassis
+	git checkout 160-php7
 	git clone --recursive https://github.com/Chassis/Tester.git extensions/tester
 	vagrant up
 
