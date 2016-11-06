@@ -6,6 +6,13 @@
 class Test_PW_Vendor_Plugins_Enabled extends WP_UnitTestCase {
 
 	/**
+	 * Human Made's Custom Meta Boxes.
+	 */
+	function test_hm_cmb() {
+		$this->assertTrue( function_exists( 'cmb_init' ), 'HM Custom Meta Boxes available.' );
+	}
+
+	/**
 	 * JB's extended-cpts available.
 	 */
 	function test_extended_cpts() {
