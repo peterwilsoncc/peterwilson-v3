@@ -1,7 +1,6 @@
 sudo: false
 
 language:
-    - php
     - node_js
 
 env:
