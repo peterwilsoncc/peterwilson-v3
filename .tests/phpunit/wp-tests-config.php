@@ -41,4 +41,6 @@ define( 'DISALLOW_FILE_MODS', true );
 if ( ! defined( 'ABSPATH' ) )
 	define( 'ABSPATH', dirname(__FILE__) . '/../../' );
 
-// include_once( __DIR__ . '/../wp-config.php' );
+// Content directories.
+defined( 'WP_CONTENT_DIR' )  || define( 'WP_CONTENT_DIR', ABSPATH . '/wp-content' );
+defined( 'WPMU_PLUGIN_DIR' ) || define( 'WPMU_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins-mu' );
