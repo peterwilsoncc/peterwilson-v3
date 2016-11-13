@@ -27,5 +27,7 @@ function register_cpt() {
 		'slug'     => 'presentations',
 	];
 
-	register_extended_post_type( 'pwcc_presentation', $cpt_args, $cpt_names );
+	$post_type = register_extended_post_type( 'pwcc_presentation', $cpt_args, $cpt_names );
+
+	return $post_type;
 }
