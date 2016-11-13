@@ -10,5 +10,6 @@
 namespace PWCC\Speaking;
 
 require_once( __DIR__ . '/namespace.php' );
+require_once( __DIR__ . '/inc/presentations.php' );
 
 add_action( 'init', __NAMESPACE__ . '\\init' );
