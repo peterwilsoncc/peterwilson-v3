@@ -23,6 +23,6 @@ defined( 'FORCE_SSL_ADMIN' )   || define( 'FORCE_SSL_ADMIN', false );
 /**
  * Chassis Extensions
  */
-if ( file_exists( __DIR__ . '/chassis-local-config-extensions.php' ) ) {
-	require_once __DIR__ . '/chassis-local-config-extensions.php';
+if ( file_exists( __DIR__ . '/chassis/chassis-local-config-extensions.php' ) ) {
+	require_once __DIR__ . '/chassis/chassis-local-config-extensions.php';
 }
