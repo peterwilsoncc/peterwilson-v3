@@ -32,4 +32,11 @@ class Test_PW_Vendor_Plugins_Enabled extends WP_UnitTestCase {
 	function test_extended_template_parts() {
 		$this->assertTrue( function_exists( 'get_extended_template_part' ), 'Extended Template Parts available.' );
 	}
+
+	/**
+	 * Mustache is loading correctly.
+	 */
+	function test_mustache_php_loads() {
+		$this->assertTrue( class_exists( 'Mustache_Template' ), 'Mustache_Template class available.' );
+	}
 }
