@@ -18,6 +18,7 @@ $hm_mu_plugins = array(
 	'vendor/extended-taxos/extended-taxos.php',
 	'vendor/extended-template-parts/extended-template-parts.php',
 	'vendor/Mustache/Autoloader.php',
+	'mustache-loader/plugin.php',
 );
 
 foreach ( $hm_mu_plugins as $file ) {
