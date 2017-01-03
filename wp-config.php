@@ -44,6 +44,7 @@ defined( 'WP_DEBUG_LOG' )     || define( 'WP_DEBUG_LOG', false );
  */
 defined( 'WP_POST_REVISIONS' ) || define( 'WP_POST_REVISIONS', 3 );
 defined( 'FORCE_SSL_ADMIN' )   || define( 'FORCE_SSL_ADMIN', true );
+define( 'HM_REWRITE_AUTOFLUSH', true );
 
 /**
  * Directories.
