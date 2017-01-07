@@ -4,6 +4,15 @@ namespace PWCC\Handlebars\RenderAPIData;
 use WP_REST_Request;
 use WP_REST_Posts_Controller;
 
+/**
+ * Convert data from a post endpoint.
+ *
+ * Converts a request for a post to the WP REST API data.
+ *
+ * @param  WP_REST_Response $data WP_REST_Response object.
+ * @param  array  $args Whether to include embeddable data.
+ * @return array        Array of representing the REST API Object.
+ */
 function convert_data( $data, $args = [] ) {
 	$defaults = [
 		'author'   => false,
@@ -103,6 +112,11 @@ function convert_data( $data, $args = [] ) {
 	return $data;
 }
 
+/**
+ * Return embedded data based on a link.
+ * @param  array $item Item to be linked.
+ * @return array       Embedded data.
+ */
 function embed_link( $item ) {
 	$server = rest_get_server();
 
