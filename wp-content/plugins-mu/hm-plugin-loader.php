@@ -17,7 +17,9 @@ $hm_mu_plugins = array(
 	'vendor/extended-cpts/extended-cpts.php',
 	'vendor/extended-taxos/extended-taxos.php',
 	'vendor/extended-template-parts/extended-template-parts.php',
+	'vendor/lightncandy/src/loader.php',
 	'vendor/hm-rewrites.php',
+	'pwcc-handlebars/plugin.php',
 );
 
 foreach ( $hm_mu_plugins as $file ) {
