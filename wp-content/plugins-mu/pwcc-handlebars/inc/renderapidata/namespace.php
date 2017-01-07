@@ -66,6 +66,22 @@ function convert_data( $data, $args = [] ) {
 
 		foreach ( $items as $item ) {
 
+			/*
+			 * This code is a dreadful, dreadful hack to account for edge cases.
+			 *
+			 * Warming the term cache on WP_Query misses warming the cache for
+			 * querying a single post against a single taxonomy. In pseudo code:
+			 * `get post 4, categories` or `get post 4, tags`.
+			 *
+			 * These are the queries the Rest API makes use of when requesting
+			 * terms using a standard embed causing the number of database queries to
+			 * balloon fairly quickly.
+			 *
+			 * As we don't really use the extra data these queries return (basically
+			 * counts), we can skip straight to the embedding each term directly.
+			 *
+			 * I thought it was cache invalidation that was supposed to be hard.
+			 */
 			if ( 'wp:term' === $rel ) {
 				$terms = get_the_terms( $data['id'], $item['taxonomy'] );
 				if ( is_wp_error( $terms ) || false === $terms ) {
