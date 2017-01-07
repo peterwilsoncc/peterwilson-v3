@@ -71,8 +71,16 @@ class Template_Part extends \Extended_Template_Part {
 		$renderer = LightnCandy::prepare( $compiled['template'], get_temp_dir() );
 
 		$data = [
-			'posts'         => RenderAPIData\get_posts_data( $posts, false ),
-			'post'          => RenderAPIData\get_post_data( $post, true ),
+			'posts'         => RenderAPIData\get_posts_data( $posts, [
+				'author'  => true,
+				'terms'   => true,
+				'replies' => false,
+			] ),
+			'post'          => RenderAPIData\get_post_data( $post,  [
+				'author'  => true,
+				'terms'   => true,
+				'replies' => false,
+			]  ),
 			'wp_did_header' => $wp_did_header,
 			'wp_query'      => $wp_query,
 			'wp_rewrite'    => $wp_rewrite,
