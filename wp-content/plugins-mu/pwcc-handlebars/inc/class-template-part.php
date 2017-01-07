@@ -94,8 +94,6 @@ class Template_Part extends \Extended_Template_Part {
 
 		$data = json_decode( wp_json_encode( $data ), true );
 
-		var_dump( $data );
-
 		echo $renderer( $data ); // WPCS: XSS ok.
 	}
 
