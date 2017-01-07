@@ -58,6 +58,7 @@ class Template_Part extends \Extended_Template_Part {
 			try {
 				$compiled = LightnCandy::compile( $template, get_handlebars_options() );
 			} catch ( Exception $e ) {
+				// @codingStandardsIgnoreLine
 				var_dump( $e );
 				return null;
 			}

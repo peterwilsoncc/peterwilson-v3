@@ -16,6 +16,7 @@ function esc_attr( $args ) {
 	}
 
 	if ( ! is_scalar( $args[0] ) ) {
+		// @codingStandardsIgnoreLine
 		throw new Exception( 'Only strings can be escaped, attempted to escape: ' . var_export( $args, true ) );
 	}
 	return safe_string( \esc_attr( $args[0] ) );
@@ -27,6 +28,7 @@ function esc_url( $args ) {
 	}
 
 	if ( ! is_scalar( $args[0] ) ) {
+		// @codingStandardsIgnoreLine
 		throw new Exception( 'Only strings can be escaped, attempted to escape: ' . var_export( $args, true ) );
 	}
 	return safe_string( \esc_url( $args[0] ) );
@@ -38,6 +40,7 @@ function esc_html( $args ) {
 	}
 
 	if ( ! is_scalar( $args[0] ) ) {
+		// @codingStandardsIgnoreLine
 		throw new Exception( 'Only strings can be escaped, attempted to escape: ' . var_export( $args, true ) );
 	}
 	return safe_string( \esc_html( $args[0] ) );
@@ -49,6 +52,7 @@ function esc_textarea( $args ) {
 	}
 
 	if ( ! is_scalar( $args[0] ) ) {
+		// @codingStandardsIgnoreLine
 		throw new Exception( 'Only strings can be escaped, attempted to escape: ' . var_export( $args, true ) );
 	}
 	return safe_string( \esc_textarea( $args[0] ) );
@@ -56,6 +60,7 @@ function esc_textarea( $args ) {
 
 function dump( $args ) {
 	ob_start();
+	// @codingStandardsIgnoreLine
 	var_dump( $args[0] );
 	return safe_string( '<pre>' . \esc_html( ob_get_clean() ) . '</pre>' );
 }
