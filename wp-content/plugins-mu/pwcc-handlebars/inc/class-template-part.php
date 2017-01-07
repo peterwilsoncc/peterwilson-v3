@@ -93,6 +93,7 @@ class Template_Part extends \Extended_Template_Part {
 			'id'            => $id,
 			'comment'       => $comment,
 			'user_ID'       => $user_ID, // @codingStandardsIgnoreLine
+			'vars'          => $this->vars,
 		];
 
 		$data = json_decode( wp_json_encode( $data ), true );
