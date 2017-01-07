@@ -125,7 +125,17 @@ function embed_link( $item ) {
 	return $server->response_to_data( $response, false );
 }
 
-function get_posts_data( $posts = null, $embed = true ) {
+/**
+ * Convert an array of posts to REST API objects.
+ *
+ * Convers a bunch of WP_Post type objects to their WP-REST API equivalents
+ *
+ * @param  array  $posts An array of WP_Posts. Defaults to current query.
+ * @param  boolean|array $embed Whether or not links should be embedded.
+ *                              An array allows fine grained control over which links to include.
+ * @return array         Equivalent to a WP_REST_Posts_Controller endpoint.
+ */
+function get_posts_data( $posts = null, $embed = false ) {
 	// Default to current query
 	if ( null === $posts ) {
 		$posts = $GLOBALS['wp_query']->posts;
@@ -145,7 +155,17 @@ function get_posts_data( $posts = null, $embed = true ) {
 	return $data;
 }
 
-function get_post_data( $post = null, $embed = true ) {
+/**
+ * Convert a post to REST API object.
+ *
+ * Converts a WP_Post objects to the WP-REST API equivalents
+ *
+ * @param  WP_Post       $posts A WP_Post object. Defaults to current global post.
+ * @param  boolean|array $embed Whether or not links should be embedded.
+ *                              An array allows fine grained control over which links to include.
+ * @return array         Equivalent to single WP_REST_Posts_Controller item.
+ */
+function get_post_data( $post = null, $embed = false ) {
 	// Default to current post
 	if ( null === $post ) {
 		$post = $GLOBALS['post'];

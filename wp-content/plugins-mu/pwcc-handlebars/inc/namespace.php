@@ -7,16 +7,37 @@ function bootstrap() {
 
 }
 
+/**
+ * Output a handlebars template part.
+ *
+ * This function is functionally identical to `get_extended_template_part()` by John Blackbourn.
+ * Instead of PHP it users handlebars.
+ *
+ * @param string $slug The slug name for the generic template.
+ * @param string $name The name of the specialised template.
+ * @param array  $vars Variables for use within the template part.
+ * @param array  $args {
+ *     Arguments for the template part.
+ *
+ *     @type int|false $cache The number of seconds this template part should be cached for, or boolean false
+ *                            for no caching. Default false.
+ *     @type string    $dir   The theme subdirectory to look in for template parts. Default 'handlebars'.
+ * }
+ */
 function get_hb_template_part( $slug, $name = '', array $vars = [], array $args = [] ) {
 	$args = wp_parse_args( $args, array(
 		'cache' => false,
-		'dir'   => '',
+		'dir'   => 'handlebars',
 	) );
 
 	$template = new Template_Part( $slug, $name, $vars, $args );
 	echo $template->get_output(); // WPCS: XSS ok.
 }
 
+/**
+ * Returns the default options used for LightnCandy handlebars php rendering.
+ * @return array Array of helpers and config flags.
+ */
 function get_handlebars_options() {
 	$flags = LightnCandy::FLAG_HANDLEBARSJS;
 	$flags |= LightnCandy::FLAG_ERROR_EXCEPTION;
