@@ -41,7 +41,9 @@ class Template_Part extends \Extended_Template_Part {
 	 * @param  string $template_file The template part file path.
 	 */
 	protected function load_template( $template_file ) {
-		global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
+		global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment;
+		// @codingStandardsIgnoreLine
+		global $user_ID;
 		$template = file_get_contents( $template_file );
 		if ( empty( $template ) ) {
 			return null;
@@ -89,7 +91,7 @@ class Template_Part extends \Extended_Template_Part {
 			'wp'            => $wp,
 			'id'            => $id,
 			'comment'       => $comment,
-			'user_ID'       => $user_ID,
+			'user_ID'       => $user_ID, // @codingStandardsIgnoreLine
 		];
 
 		$data = json_decode( wp_json_encode( $data ), true );
