@@ -11,9 +11,10 @@ function convert_data( $data, $args = [] ) {
 		'wp:term' => false,
 	];
 
-	if ( is_bool( $embed ) ) {
+	if ( is_bool( $args ) ) {
 		foreach ( $defaults as $key => $value ) {
-			$defaults[ $key ] = $embed;
+			$defaults[ $key ] = $args;
+			$args = [];
 		}
 	}
 
