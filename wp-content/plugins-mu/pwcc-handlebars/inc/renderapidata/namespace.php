@@ -126,7 +126,7 @@ function embed_link( $item ) {
 
 function get_posts_data( $posts = null, $embed = true ) {
 	// Default to current query
-	if ( $posts === null ) {
+	if ( null === $posts ) {
 		$posts = $GLOBALS['wp_query']->posts;
 	}
 
@@ -146,7 +146,7 @@ function get_posts_data( $posts = null, $embed = true ) {
 
 function get_post_data( $post = null, $embed = true ) {
 	// Default to current post
-	if ( $post === null ) {
+	if ( null === $post ) {
 		$post = $GLOBALS['post'];
 	}
 
