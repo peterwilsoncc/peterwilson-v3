@@ -93,6 +93,7 @@ class Template_Part extends \Extended_Template_Part {
 			'id'            => $id,
 			'comment'       => $comment,
 			'user_ID'       => $user_ID, // @codingStandardsIgnoreLine
+			'vars'          => $this->vars,
 		];
 
 		$data = json_decode( wp_json_encode( $data ), true );
@@ -125,4 +126,13 @@ class Template_Part extends \Extended_Template_Part {
 
 	}
 
+
+	/**
+	 * Get the template part cache key.
+	 *
+	 * @return string The cache key.
+	 */
+	protected function cache_key() {
+		return 'pwcc_hb_part_' . md5( $this->locate_template() . '/' . wp_json_encode( [ $this->args, $this->vars ] ) );
+	}
 }

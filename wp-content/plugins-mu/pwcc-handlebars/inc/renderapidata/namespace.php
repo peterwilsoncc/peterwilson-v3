@@ -5,36 +5,33 @@ use WP_REST_Request;
 use WP_REST_Posts_Controller;
 
 /**
- * Convert data from a post endpoint.
+ * Convert data from a REST API endpoint.
  *
- * Converts a request for a post to the WP REST API data.
+ * Converts a request for an object to the WP REST API data.
  *
  * @param  WP_REST_Response $data WP_REST_Response object.
- * @param  array  $args Whether to include embeddable data.
+ * @param  array|bool   $args Whether to include embeddable data.
  * @return array        Array of representing the REST API Object.
  */
-function convert_data( $data, $args = [] ) {
-	$defaults = [
-		'author'   => false,
-		'replies'  => false,
-		'wp:term' => false,
-	];
-
-	if ( is_bool( $args ) ) {
-		foreach ( $defaults as $key => $value ) {
-			$defaults[ $key ] = $args;
-			$args = [];
-		}
-	}
-
+function convert_data( $data, $args = false ) {
 	$server = rest_get_server();
 	$data = $server->response_to_data( $data, false );
 
-	if ( true === $embed ) {
-		// Hackity hack hack: Ensures we're only dealing with arrays
-		$data = json_decode( wp_json_encode( $data ), true );
+	$links = $data['_links'];
+	// Unset self because it's dumb to embed.
+	unset( $links['self'] );
+	$defaults = [];
 
-		return $data;
+	if ( is_bool( $args ) ) {
+		foreach ( $links as $key => $value ) {
+			$defaults[ $key ] = $args;
+		}
+		$args = [];
+	} else {
+		foreach ( $links as $key => $value ) {
+			$defaults[ $key ] = false;
+		}
+		$defaults['wp:term'] = true;
 	}
 
 	if ( isset( $args['terms'] ) && ! isset( $args['wp:term'] ) ) {
@@ -43,11 +40,6 @@ function convert_data( $data, $args = [] ) {
 	}
 
 	$args = wp_parse_args( $args, $defaults );
-
-	$links = $data['_links'];
-	// Unset self because it's dumb to embed.
-	// Unset terms because we handle those below
-	unset( $links['self'] );
 
 	$embedded = [];
 
