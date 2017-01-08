@@ -14,3 +14,6 @@
 [submodule "wp-content/plugins-mu/vendor/custom-meta-boxes"]
 	path = wp-content/plugins-mu/vendor/custom-meta-boxes
 	url = https://github.com/humanmade/Custom-Meta-Boxes.git
+[submodule "wp-content/plugins-mu/vendor/lightncandy"]
+	path = wp-content/plugins-mu/vendor/lightncandy
+	url = https://github.com/zordius/lightncandy.git
