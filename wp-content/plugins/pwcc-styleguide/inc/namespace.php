@@ -118,3 +118,43 @@ function block_worg_updates( $request_args, $url ) {
 
 	return $request_args;
 }
+
+/**
+ * Get all handlebars files in the styleguide.
+ *
+ * @param  string $dir [description]
+ * @return [type]      [description]
+ */
+function get_files( $dir = 'handlebars' ) {
+	$all = wp_get_theme()->get_files( 'hb.html', -1, true );
+	$dir = untrailingslashit( $dir ) . '/';
+	$all = array_filter( $all, function ( $value, $key ) use ( $dir ) {
+		return ( 0 === strpos( $key, $dir ) );
+	}, ARRAY_FILTER_USE_BOTH );
+
+	return $all;
+}
+
+/**
+ * Get the short names for all the handlebars files in the style guide.
+ * @param  string $dir [description]
+ * @return [type]      [description]
+ */
+function get_names( $dir = 'handlebars' ) {
+	$all = get_files( $dir );
+	$dir = untrailingslashit( $dir ) . '/';
+
+	$named_files = [];
+	$ll = array_filter( $all, function ( $value, $key ) use ( &$named_files, $dir ) {
+		$name = substr( $key, strlen( $dir ) );
+
+		preg_match( '/^(\d*-?)?([a-zA-Z0-9\-\_]*)\/.*\/(\d*-?)?([a-zA-Z0-9\-\_]*)(\.hb\.html)$/' , $name, $matches );
+
+		$name = $matches[2] . '.' . $matches[4];
+		$named_files[ $name ] = $value;
+		return true;
+	}, ARRAY_FILTER_USE_BOTH );
+
+	return $named_files;
+}
+
