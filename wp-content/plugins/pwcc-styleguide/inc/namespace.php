@@ -118,3 +118,61 @@ function block_worg_updates( $request_args, $url ) {
 
 	return $request_args;
 }
+
+/**
+ * Get all handlebars files in the styleguide.
+ *
+ * @param  string $dir Directory containing handlebars files.
+ * @return array       Array of handlebars files.
+ */
+function get_files( $dir = 'handlebars' ) {
+	$all = wp_get_theme()->get_files( 'hbs', -1, true );
+	$dir = untrailingslashit( $dir ) . '/';
+	$all = array_filter( $all, function ( $value, $key ) use ( $dir ) {
+		return ( 0 === strpos( $key, $dir ) );
+	}, ARRAY_FILTER_USE_BOTH );
+
+	return $all;
+}
+
+/**
+ * Get the short names for all the handlebars files in the style guide.
+ *
+ * @param  string $dir Directory containing handlebars files.
+ * @return array       Array of handlebars files.
+ */
+function get_names( $dir = 'handlebars' ) {
+	$all = get_files( $dir );
+	$dir = untrailingslashit( $dir ) . '/';
+
+	$named_files = [];
+	$ll = array_filter( $all, function ( $value, $key ) use ( &$named_files, $dir ) {
+		$name = substr( $key, strlen( $dir ) );
+
+		preg_match( '/^(\d*-?)?([a-zA-Z0-9\-\_]*)\/.*\/(\d*-?)?([a-zA-Z0-9\-\_]*)(\.hbs)$/' , $name, $matches );
+
+		$name = $matches[2] . '.' . $matches[4];
+		$named_files[ $name ] = $value;
+		return true;
+	}, ARRAY_FILTER_USE_BOTH );
+
+	return $named_files;
+}
+
+/**
+ * Get the URLs against the shortnames for handlebars files in the styleguide.
+ *
+ * @param  string $dir Directory containing handlebars files.
+ * @return array       Array of handlebars URLs.
+ */
+function get_urls( $dir = 'handlebars' ) {
+	$files = get_names( $dir );
+
+	return array_map( function ( $value ) {
+		return str_replace(
+			[ get_stylesheet_directory(),     get_template_directory() ],
+			[ get_stylesheet_directory_uri(), get_template_directory_uri() ],
+			$value
+		);
+	}, $files );
+}
