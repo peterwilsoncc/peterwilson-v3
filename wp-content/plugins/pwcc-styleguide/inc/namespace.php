@@ -122,8 +122,8 @@ function block_worg_updates( $request_args, $url ) {
 /**
  * Get all handlebars files in the styleguide.
  *
- * @param  string $dir [description]
- * @return [type]      [description]
+ * @param  string $dir Directory containing handlebars files.
+ * @return array       Array of handlebars files.
  */
 function get_files( $dir = 'handlebars' ) {
 	$all = wp_get_theme()->get_files( 'hbs', -1, true );
@@ -137,8 +137,9 @@ function get_files( $dir = 'handlebars' ) {
 
 /**
  * Get the short names for all the handlebars files in the style guide.
- * @param  string $dir [description]
- * @return [type]      [description]
+ *
+ * @param  string $dir Directory containing handlebars files.
+ * @return array       Array of handlebars files.
  */
 function get_names( $dir = 'handlebars' ) {
 	$all = get_files( $dir );
