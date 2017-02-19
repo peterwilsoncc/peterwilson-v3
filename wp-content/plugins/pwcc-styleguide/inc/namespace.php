@@ -126,7 +126,7 @@ function block_worg_updates( $request_args, $url ) {
  * @return [type]      [description]
  */
 function get_files( $dir = 'handlebars' ) {
-	$all = wp_get_theme()->get_files( 'hb.html', -1, true );
+	$all = wp_get_theme()->get_files( 'hbs', -1, true );
 	$dir = untrailingslashit( $dir ) . '/';
 	$all = array_filter( $all, function ( $value, $key ) use ( $dir ) {
 		return ( 0 === strpos( $key, $dir ) );
@@ -148,7 +148,7 @@ function get_names( $dir = 'handlebars' ) {
 	$ll = array_filter( $all, function ( $value, $key ) use ( &$named_files, $dir ) {
 		$name = substr( $key, strlen( $dir ) );
 
-		preg_match( '/^(\d*-?)?([a-zA-Z0-9\-\_]*)\/.*\/(\d*-?)?([a-zA-Z0-9\-\_]*)(\.hb\.html)$/' , $name, $matches );
+		preg_match( '/^(\d*-?)?([a-zA-Z0-9\-\_]*)\/.*\/(\d*-?)?([a-zA-Z0-9\-\_]*)(\.hbs)$/' , $name, $matches );
 
 		$name = $matches[2] . '.' . $matches[4];
 		$named_files[ $name ] = $value;
