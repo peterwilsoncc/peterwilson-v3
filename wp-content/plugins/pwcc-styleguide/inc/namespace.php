@@ -157,3 +157,21 @@ function get_names( $dir = 'handlebars' ) {
 
 	return $named_files;
 }
+
+/**
+ * Get the URLs against the shortnames for handlebars files in the styleguide.
+ *
+ * @param  string $dir Directory containing handlebars files.
+ * @return array       Array of handlebars URLs.
+ */
+function get_urls( $dir = 'handlebars' ) {
+	$files = get_names( $dir );
+
+	return array_map( function ( $value ) {
+		return str_replace(
+			[ get_stylesheet_directory(),     get_template_directory() ],
+			[ get_stylesheet_directory_uri(), get_template_directory_uri() ],
+			$value
+		);
+	}, $files );
+}
