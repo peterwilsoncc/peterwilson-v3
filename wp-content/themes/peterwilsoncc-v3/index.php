@@ -8,8 +8,6 @@ wp_head();
 var_dump([
 	PWCC\Styleguide\get_files(),
 	PWCC\Styleguide\get_names(),
-	PWCC\Styleguide\get_nav(),
-	PWCC\Styleguide\get_pl_config_js(),
 ]);
 
 
