@@ -24,7 +24,7 @@ function add_rewrite() {
 	hm_add_rewrite_rule([
 		'regex'               => '^(pattern-library)(\/?|\/(.*))$',
 		'query'               => 'pattern-library=$matches[3]',
-		'template'            => __DIR__ . '/../pattern-library.php',
+		'template'            => 'pattern-library.php',
 		'body_class_callback' => __NAMESPACE__ . '\\body_class_callback',
 		'query_callback'      => __NAMESPACE__ . '\\query_callback',
 		'disable_canonical'   => true,
