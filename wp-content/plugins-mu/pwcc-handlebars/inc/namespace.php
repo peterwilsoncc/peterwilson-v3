@@ -27,7 +27,7 @@ function bootstrap() {
 function get_hb_template_part( $slug, $name = '', array $vars = [], array $args = [] ) {
 	$args = wp_parse_args( $args, array(
 		'cache' => false,
-		'dir'   => 'handlebars',
+		'dir'   => apply_filters( 'pwcc_handlebars_template_directory', 'handlebars' ),
 	) );
 
 	$template = new Template_Part( $slug, $name, $vars, $args );
