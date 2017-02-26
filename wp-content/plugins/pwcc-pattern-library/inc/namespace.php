@@ -28,7 +28,29 @@ function add_rewrite() {
 		'body_class_callback' => __NAMESPACE__ . '\\body_class_callback',
 		'query_callback'      => __NAMESPACE__ . '\\query_callback',
 		'disable_canonical'   => true,
+		'title_callback'      => __NAMESPACE__ . '\\title_callback',
 	]);
+}
+
+/**
+ * Add pattern library title.
+ *
+ * @param  string $title The page title.
+ * @param  string $sep   The title seperator.
+ * @return string        The page title, an empty string indicates WP should
+ *                       generate the title automatically.
+ */
+function title_callback( $title, $sep ) {
+	// HM Rewrite uses the wrong hook but because we know that
+	// this is the correct template, we can set up a filter for the
+	// correct hook without any logic checks.
+
+	add_filter( 'document_title_parts', function( $title_parts ) {
+		$title_parts['title'] = 'Pattern Library';
+		return $title_parts;
+	} );
+
+	return $title;
 }
 
 /**
