@@ -87,6 +87,7 @@ function posts_pre_query( $posts, WP_Query $query ) {
 		// These need to be set manually as part of bypassing the database query.
 		$query->found_posts   = 1;
 		$query->max_num_pages = 1;
+		$query->cache_results = false;
 		// Bypass the database query.
 		return [
 			(object) [
