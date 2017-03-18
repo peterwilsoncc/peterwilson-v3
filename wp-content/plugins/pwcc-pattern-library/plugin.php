@@ -1,14 +1,14 @@
 <?php
 /*
- * Plugin Name: Styleguide
- * Description: Display a styleguide within WordPress.
+ * Plugin Name: Pattern Library
+ * Description: Display a Pattern Library within WordPress.
  * Version:     1.0.0-alpha
  * Author:      Peter Wilson
  * Author URI:  https://peterwilson.cc/
  * License:     GPLv2 or later
  */
 
-namespace PWCC\Styleguide;
+namespace PWCC\PatternLibrary;
 
 require_once __DIR__ . '/inc/namespace.php';
 

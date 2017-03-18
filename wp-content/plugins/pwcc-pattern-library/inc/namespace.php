@@ -1,5 +1,5 @@
 <?php
-namespace PWCC\Styleguide;
+namespace PWCC\PatternLibrary;
 
 use WP;
 use WP_Query;
@@ -22,17 +22,39 @@ function bootstrap() {
  */
 function add_rewrite() {
 	hm_add_rewrite_rule([
-		'regex'               => '^(styleguide)(\/?|\/(.*))$',
-		'query'               => 'styleguide=$matches[3]',
-		'template'            => __DIR__ . '/../styleguide.php',
+		'regex'               => '^(pattern-library)(\/?|\/(.*))$',
+		'query'               => 'pattern-library=$matches[3]',
+		'template'            => 'pattern-library.php',
 		'body_class_callback' => __NAMESPACE__ . '\\body_class_callback',
 		'query_callback'      => __NAMESPACE__ . '\\query_callback',
 		'disable_canonical'   => true,
+		'title_callback'      => __NAMESPACE__ . '\\title_callback',
 	]);
 }
 
 /**
- * Add styleguide related classes to the body class.
+ * Add pattern library title.
+ *
+ * @param  string $title The page title.
+ * @param  string $sep   The title seperator.
+ * @return string        The page title, an empty string indicates WP should
+ *                       generate the title automatically.
+ */
+function title_callback( $title, $sep ) {
+	// HM Rewrite uses the wrong hook but because we know that
+	// this is the correct template, we can set up a filter for the
+	// correct hook without any logic checks.
+
+	add_filter( 'document_title_parts', function( $title_parts ) {
+		$title_parts['title'] = 'Pattern Library';
+		return $title_parts;
+	} );
+
+	return $title;
+}
+
+/**
+ * Add pattern library related classes to the body class.
  *
  * Note: `hm_add_rewrite_rule` ensures this runs on the correct pages.
  *
@@ -40,16 +62,16 @@ function add_rewrite() {
  * @return array           Classes to be displayed on body class.
  */
 function body_class_callback( array $classes = [] ) {
-	$classes[] = 'styleguide';
-	if ( ! empty( get_query_var( 'styleguide' ) ) ) {
-		$html_class = str_replace( '/', '-', get_query_var( 'styleguide' ) );
-		$classes[] = 'styleguide-' . sanitize_html_class( $html_class );
+	$classes[] = 'pattern-library';
+	if ( ! empty( get_query_var( 'pattern-library' ) ) ) {
+		$html_class = str_replace( '/', '-', get_query_var( 'pattern-library' ) );
+		$classes[] = 'pattern-library-' . sanitize_html_class( $html_class );
 	}
 	return $classes;
 }
 
 /**
- * Bypass main query on styleguide pages.
+ * Bypass main query on pattern library pages.
  *
  * The styleguide requires WP to be running but does not need any posts,
  * this returns an empty array of posts to prevent WP_Query from running an
@@ -61,7 +83,7 @@ function body_class_callback( array $classes = [] ) {
  *                         Null if the query is to proceed.
  */
 function posts_pre_query( $posts, WP_Query $query ) {
-	if ( $query->is_main_query() && isset( $query->query_vars['styleguide'] ) ) {
+	if ( $query->is_main_query() && isset( $query->query_vars['pattern-library'] ) ) {
 		// These need to be set manually as part of bypassing the database query.
 		$query->found_posts   = 1;
 		$query->max_num_pages = 1;

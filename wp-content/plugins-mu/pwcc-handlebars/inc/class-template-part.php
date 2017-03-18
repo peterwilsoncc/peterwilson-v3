@@ -19,10 +19,10 @@ class Template_Part extends \Extended_Template_Part {
 		$templates = [];
 
 		if ( ! empty( $this->name ) ) {
-			$templates[] = "{$this->args['dir']}/{$this->slug}-{$this->name}.hb.html";
+			$templates[] = "{$this->args['dir']}/{$this->slug}-{$this->name}.hbs";
 		}
 
-		$templates[] = "{$this->args['dir']}/{$this->slug}.hb.html";
+		$templates[] = "{$this->args['dir']}/{$this->slug}.hbs";
 
 		$this->template = locate_template( $templates );
 
