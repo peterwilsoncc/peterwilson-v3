@@ -1,18 +1,17 @@
-<html>
-<head>
-	<title>Pattern Library</title>
-	<?php wp_head() ?>
-</head>
-<body <?php body_class() ?>>
-	<h1>Patterns go here</h1>
-	<?php
-		$organisms = [
-			'colours',
-		];
+<?php
+get_header( 'pl' );
+?>
+<h1>Patterns go here</h1>
+<?php
+	$organisms = [
+		'colours',
+	];
 
-		foreach ( $organisms as $organism ) {
-			PWCC\Handlebars\get_hb_template_part( 'organisms/' . $organism );
-		}
-	?>
-	<?php wp_footer() ?>
-</body>
+	foreach ( $organisms as $organism ) {
+		get_extended_template_part( 'pattern-header', '', [], [ 'dir' => 'pattern-library' ] );
+		PWCC\Handlebars\get_hb_template_part( 'organisms/' . $organism );
+		get_extended_template_part( 'pattern-footer', '', [], [ 'dir' => 'pattern-library' ] );
+	}
+?>
+<?php
+get_footer( 'pl' );
