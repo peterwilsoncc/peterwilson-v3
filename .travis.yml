@@ -21,7 +21,7 @@ before_install:
   - mysql -e 'CREATE DATABASE wordpress_test;'
 
 before_script:
-- composer install --dev
+- composer global require "phpunit/phpunit=5.7.*"
 
 branches:
   only:
