@@ -21,12 +21,7 @@ before_install:
   - mysql -e 'CREATE DATABASE wordpress_test;'
 
 before_script:
-- |
-  if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
-    composer global require "phpunit/phpunit=5.7.*"
-  else
-    composer global require "phpunit/phpunit=4.8.*"
-  fi
+- composer global require "phpunit/phpunit=5.7.*"
 
 branches:
   only:
