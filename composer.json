@@ -1,7 +1,6 @@
 {
 	"require-dev": {
 		"squizlabs/php_codesniffer": "2.*",
-		"humanmade/coding-standards": "^0.2.1",
-		"phpunit/phpunit": "5.7"
+		"humanmade/coding-standards": "^0.2.1"
 	}
 }
