@@ -1,0 +1,3 @@
+[submodule "mu-plugins/vendor/cmb2"]
+	path = mu-plugins/vendor/cmb2
+	url = https://github.com/CMB2/CMB2.git
