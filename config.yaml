@@ -1,0 +1,16 @@
+hosts:
+    - peterwilson.local
+
+database:
+    name: wordpress
+    user: wordpress
+    password: vagrantpassword
+    prefix: wp_
+
+extensions:
+    - Chassis/Tester
+    - Chassis/Fish
+    - Chassis/MailHog
+    - Chassis/Xdebug
+
+php: 7.0
