@@ -7,3 +7,6 @@
 [submodule "mu-plugins/vendor/extended-taxos"]
 	path = mu-plugins/vendor/extended-taxos
 	url = https://github.com/johnbillion/extended-taxos.git
+[submodule "mu-plugins/vendor/extended-template-parts"]
+	path = mu-plugins/vendor/extended-template-parts
+	url = https://github.com/johnbillion/extended-template-parts.git
