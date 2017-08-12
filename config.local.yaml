@@ -1,0 +1,27 @@
+hosts:
+    - peterwilson.local
+    - peterwilsonme.local
+
+paths:
+    # Modify Chassic config to use site's src directory.
+    base: ../src
+
+    # Where WordPress lives. Relative to the base directory.
+    wp: wp
+
+    # Content directory. Relative to the base directory.
+    content: content
+
+database:
+    name: wordpress
+    user: wordpress
+    password: vagrantpassword
+    prefix: wp_
+
+extensions:
+    - Chassis/Tester
+    - Chassis/Fish
+    - Chassis/MailHog
+    - Chassis/Xdebug
+
+php: 7.0
