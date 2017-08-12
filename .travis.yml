@@ -3,6 +3,7 @@ sudo: false
 language:
     - php
     - node_js
+    - bash
 
 php:
     - 7.0
