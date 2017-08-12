@@ -10,17 +10,13 @@ register_shutdown_function( function() {
 	}
 } );
 
-if ( getenv( 'WP_TESTS_DIR' ) ) {
-	$wp_tests_dir = getenv( 'WP_TESTS_DIR' );
-} else {
-	$wp_tests_dir = '/vagrant/extensions/Tester/wpdevel/tests/phpunit';
-}
-
 if ( getenv( 'WP_DEVELOP_DIR' ) ) {
 	$wp_develop_dir = getenv( 'WP_DEVELOP_DIR' );
 } else {
 	$wp_develop_dir = '/vagrant/extensions/Tester/wpdevel';
 }
+$wp_tests_dir = $wp_develop_dir . '/tests/phpunit';
+
 
 require_once $wp_tests_dir . '/includes/functions.php';
 
