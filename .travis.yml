@@ -19,6 +19,7 @@ before_script:
     - export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
     - composer global require "phpunit/phpunit=5.7.*"
     - bash ./.tests/.bin/install-wp-tests.sh "wordpress_test" "travis" ""
+    - mv $WP_DEVELOP_DIR/tests/phpunit/includes ./.tests/php
 
 script:
     - phpunit

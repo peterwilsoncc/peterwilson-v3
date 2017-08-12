@@ -15,7 +15,13 @@ if ( getenv( 'WP_DEVELOP_DIR' ) ) {
 } else {
 	$wp_develop_dir = '/vagrant/extensions/Tester/wpdevel';
 }
-$wp_tests_dir = $wp_develop_dir . '/tests/phpunit';
+
+if ( file_exists( __DIR__ . '/includes/bootstrap.php' ) ) {
+	// Use the version of the test lib included here.
+	$wp_tests_dir = __DIR__;
+} else {
+	$wp_tests_dir = $wp_develop_dir . '/tests/phpunit';
+}
 
 require_once $wp_tests_dir . '/includes/functions.php';
 
