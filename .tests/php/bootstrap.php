@@ -17,7 +17,7 @@ if ( getenv( 'WP_DEVELOP_DIR' ) ) {
 }
 $wp_tests_dir = $wp_develop_dir . '/tests/phpunit';
 
-if ( getenv( 'CI' ) && 'true' === getenv( 'CI' ) ) {
+if ( getenv( 'CI' ) ) {
 	$config_file_path = __DIR__;
 }
 
