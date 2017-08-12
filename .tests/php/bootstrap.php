@@ -17,6 +17,9 @@ if ( getenv( 'WP_DEVELOP_DIR' ) ) {
 }
 $wp_tests_dir = $wp_develop_dir . '/tests/phpunit';
 
+if ( getenv( 'CI' ) && 'true' === getenv( 'CI' ) ) {
+	$config_file_path = __DIR__;
+}
 
 require_once $wp_tests_dir . '/includes/functions.php';
 
