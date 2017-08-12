@@ -16,9 +16,9 @@ if ( file_exists( '/vagrant/local-config-db.php' ) ) {
 
 // Include local-config too.
 if ( file_exists( __DIR__ . '/local-config.php' ) ) {
-	defined('WP_LOCAL_DEV' ) or define( 'WP_LOCAL_DEV', true );
+	defined( 'WP_LOCAL_DEV' ) or define( 'WP_LOCAL_DEV', true );
 	include( __DIR__ . '/local-config.php' );
-} elseif ( ! defined('WP_LOCAL_DEV') ) {
+} elseif ( ! defined( 'WP_LOCAL_DEV' ) ) {
 	define( 'WP_LOCAL_DEV', false );
 	define( 'DB_NAME', '%%DB_NAME%%' );
 	define( 'DB_USER', '%%DB_USER%%' );
@@ -28,11 +28,11 @@ if ( file_exists( __DIR__ . '/local-config.php' ) ) {
 
 // Check that we actually have a DB config.
 if ( ! defined( 'DB_HOST' ) || strpos( DB_HOST, '%%' ) !== false ) {
-	header('X-WP-Error: dbconf', true, 500);
+	header( 'X-WP-Error: dbconf', true, 500 );
 	echo '<h1>Database configuration is incomplete.</h1>';
 	echo "<p>If you're developing locally, ensure you have a local-config.php.
 	If this is in production, deployment is broken.</p>";
-	die(1);
+	die( 1 );
 }
 
 // Set up WP location.
@@ -69,11 +69,11 @@ if ( file_exists( WP_CONTENT_DIR . '/config.php' ) ) {
 }
 
 // URL hacks for Vagrant.
-if ( WP_LOCAL_DEV && ! defined('WP_SITEURL') && ! defined( 'WP_INSTALLING' ) ) {
-	define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp');
+if ( WP_LOCAL_DEV && ! defined( 'WP_SITEURL' ) && ! defined( 'WP_INSTALLING' ) ) {
+	define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp' );
 
 	if ( ! defined( 'WP_HOME' ) ) {
-		define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+		define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
 	}
 }
 
@@ -110,17 +110,18 @@ if ( empty( $table_prefix ) ) {
  */
 if ( WP_LOCAL_DEV ) {
 	defined( 'WP_DEBUG' ) or define( 'WP_DEBUG', true );
-}
-// Only override if not already set.
-elseif ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
+} elseif ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
+	// Only override if not already set.
+	// @CodingStandardsIgnoreStart
 	ini_set( 'display_errors', 0 );
 	define( 'WP_DEBUG_DISPLAY', false );
+	// @CodingStandardsIgnoreEnd
 }
 
 // Bootstrap WordPress.
 if ( ! file_exists( ABSPATH . 'wp-settings.php' ) ) {
-	header('X-WP-Error: wpmissing', true, 500);
+	header( 'X-WP-Error: wpmissing', true, 500 );
 	echo '<h1>WordPress is missing.</h1>';
-	die(1);
+	die( 1 );
 }
 require_once( ABSPATH . 'wp-settings.php' );
