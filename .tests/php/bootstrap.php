@@ -17,7 +17,10 @@ if ( getenv( 'WP_DEVELOP_DIR' ) ) {
 }
 
 if ( file_exists( __DIR__ . '/includes/bootstrap.php' ) ) {
-	// Use the version of the test lib included here.
+	/*
+	 * Use the version of the test lib included here, presumably
+	 * they were included for a reason.
+	 */
 	$wp_tests_dir = __DIR__;
 } else {
 	$wp_tests_dir = $wp_develop_dir . '/tests/phpunit';

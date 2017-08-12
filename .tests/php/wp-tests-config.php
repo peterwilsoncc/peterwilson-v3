@@ -24,7 +24,7 @@ define( 'WP_TESTS_TITLE', 'Test Blog' );
 
 define( 'WP_PHP_BINARY', 'php' );
 
-define( 'WP_TESTS_MULTISITE', true );
+define( 'WP_TESTS_MULTISITE', false );
 
 define( 'HM_DEV', true );
 
