@@ -1,0 +1,42 @@
+sudo: false
+
+language:
+    - php
+    - node_js
+
+php:
+    - 5.6
+    - 7.0
+    - 7.1
+
+env:
+    - WP_VERSION=latest WP_MULTISITE=0
+
+matrix:
+    allow_failures:
+        - php: 5.6
+        - php: 7.1
+
+before_install:
+    - mysql -e 'CREATE DATABASE wordpress_test;'
+
+before_script:
+    - composer config --list --global
+    - export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
+    - composer global require "phpunit/phpunit=5.7.*"
+
+script:
+    - phpunit
+
+branches:
+  only:
+    - master
+    - develop
+    - staging
+
+notifications:
+    email: false
+    slack:
+      secure: HtKZvWm3xjuE+ZcRZW0tRBc+oBjSIMEFK/LCNnOQpjiqzM1pb3rO3FAhI5RP3Q6Rz5lQ/zJdZa2TQDgU/bFRALLCsRqugxpGXHh4dMIcsBlihgMXF7DhDubYIy9obCJ4er2uUgKSJKp8sTVW8mAOCl2hVmzBOocx70EqnM+jCl+JkowM+oMBtpCsBfZ4B1y0Tst/ahVMHVkwX/67YqV3oowCBNKWTxlJdGbVvfgPx+v2FZpPGnx0WNLCBIH9UghFnAvIEg3iFZhKD+SjUeVP7+mnJOOVZPq7NH25r29x/GiNvgxjOfRuzunBL6/uiL3iZoKO6znGukVZNIDmHUo52K0kjuM3YQlPJyWDprjJUXtG/yb93FYkbkzcyeBt9vx9H+7Qmw4+GCJ3WInQ8odJ1+xWqfePrMPAx2RtZdX0eyAYiNeW7Bc9/ro9Gjqbm5zVv9QHxZvR1bt2yQzvfEPhylkyXXUqymkhyBsggarOSii2aRSmfwsj7wThTafGGV2HBzz6QjGf9LB1E1OcXkPHcAmRJXlxh5QeL7thxAIEgCjPs5Au+6dQ6lkLNuBDr5RxLPUnrLZSj2l8QoMtf8s4bmTZkrVwMZhFEaPfPhiSB8vTjQIFsJrTm5Kpr6/Fm/MWr8BhWTny/w+KhPBDyElLfelX+48Uri9NS03ZfQCCJ+g=
+      on_success: change
+      on_failure: always
