@@ -16,17 +16,17 @@ $hm_mu_plugins = [
 	'vendor/cmb2/init.php',
 	'vendor/extended-cpts/extended-cpts.php',
 	'vendor/extended-taxos/extended-taxos.php',
-	'vendor/extended-template-parts/extended-template-parts.php'
+	'vendor/extended-template-parts/extended-template-parts.php',
 ];
 
-add_action( 'pre_current_active_plugins', function() use ($hm_mu_plugins) {
-	global $plugins,$wp_list_table;
+add_action( 'pre_current_active_plugins', function() use ( $hm_mu_plugins ) {
+	global $plugins, $wp_list_table;
 
 	// Add our own mu-plugins to the page
-	foreach( $hm_mu_plugins as $plugin_file ) {
+	foreach ( $hm_mu_plugins as $plugin_file ) {
 		$plugin_data = get_plugin_data( WPMU_PLUGIN_DIR . "/$plugin_file", false, false ); // Do not apply markup/translate as it'll be cached.
 
-		if ( empty( $plugin_data['Name'])) {
+		if ( empty( $plugin_data['Name'] ) ) {
 			$plugin_data['Name'] = $plugin_file;
 		}
 
