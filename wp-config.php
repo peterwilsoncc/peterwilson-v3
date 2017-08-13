@@ -19,6 +19,12 @@ if ( file_exists( '/vagrant/local-config-db.php' ) ) {
 if ( file_exists( __DIR__ . '/local-config.php' ) ) {
 	defined( 'WP_LOCAL_DEV' ) or define( 'WP_LOCAL_DEV', true );
 	include( __DIR__ . '/local-config.php' );
+} elseif ( ! defined( 'WP_LOCAL_DEV' ) && getenv( 'DB_NAME' ) ) {
+	define( 'WP_LOCAL_DEV', false );
+	define( 'DB_NAME', getenv( 'DB_NAME' ) );
+	define( 'DB_USER', getenv( 'DB_USER' ) );
+	define( 'DB_PASSWORD', getenv( 'DB_PASSWORD' ) );
+	define( 'DB_HOST', getenv( 'DB_HOST' ) ); // Probably 'localhost'
 } elseif ( ! defined( 'WP_LOCAL_DEV' ) ) {
 	define( 'WP_LOCAL_DEV', false );
 	define( 'DB_NAME', '%%DB_NAME%%' );
