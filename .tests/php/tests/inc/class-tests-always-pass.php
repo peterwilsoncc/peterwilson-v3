@@ -1,7 +1,15 @@
 <?php
-namespace PWCC\Tests\Always;
+namespace PWCC\Tests;
 
-class Aways_Pass extends \WP_UnitTestCase {
+/**
+ * Class Tests_Aways_Pass
+ *
+ * Some dummy unit tests that always pass to test Travis CI config.
+ *
+ * @todo tech-debt: remove once some proper tests exist.
+ * @package PWCC\Tests
+ */
+class Tests_Always_Pass extends \WP_UnitTestCase {
 
 	public function test_boolean() {
 		$this->assertTrue( true );

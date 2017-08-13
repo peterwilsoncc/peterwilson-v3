@@ -1,5 +1,5 @@
 <?php
-
+// @codingStandardsIgnoreFile
 $_SERVER['HTTP_HOST'] = 'localhost';
 
 define( 'HM_ENV', 'travisci' );

@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreFile
 // ===================================================
 // Editing of this file is discouraged. Create a local-config.php to define custom constants.
 // ===================================================
