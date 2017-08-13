@@ -7,4 +7,5 @@
 	<exclude-pattern>*/wp/*</exclude-pattern>
 	<exclude-pattern>*/content/uploads/*</exclude-pattern>
 	<exclude-pattern>*/content/test-uploads/*</exclude-pattern>
+	<exclude-pattern>*/.tests/php/includes/*</exclude-pattern>
 </ruleset>
