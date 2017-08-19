@@ -1,6 +1,3 @@
-[submodule "content/mu-plugins/vendor/cmb2"]
-	path = content/mu-plugins/vendor/cmb2
-	url = https://github.com/CMB2/CMB2.git
 [submodule "wp"]
 	path = wp
 	url = https://github.com/WordPress/WordPress.git
