@@ -26,6 +26,9 @@ script:
     - phpunit
     - vendor/bin/phpcs --standard=phpcs.ruleset.xml .
 
+before_deploy:
+    - openssl aes-256-cbc -K $encrypted_e1d8b8e0c121_key -iv $encrypted_e1d8b8e0c121_iv -in .travisci/deploy_rsa.enc -out /tmp/deploy_rsa -d
+
 branches:
   only:
     - master
