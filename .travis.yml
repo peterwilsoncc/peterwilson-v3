@@ -33,9 +33,11 @@ before_deploy:
     - ssh-add /tmp/deploy_rsa
 
 deploy:
-    provider: script
-    skip_cleanup: true
-    script: .travisci/deploy.sh
+    - provider: script
+      skip_cleanup: true
+      script: .travisci/deploy.sh
+      on:
+          branch: GH-50-deploy-to-dev
 
 branches:
   only:
