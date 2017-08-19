@@ -7,3 +7,6 @@
 [submodule "content/mu-plugins/vendor/extended-cpts"]
 	path = content/mu-plugins/vendor/extended-cpts
 	url = https://github.com/johnbillion/extended-cpts.git
+[submodule "content/mu-plugins/vendor/extended-taxos"]
+	path = content/mu-plugins/vendor/extended-taxos
+	url = https://github.com/johnbillion/extended-taxos.git
