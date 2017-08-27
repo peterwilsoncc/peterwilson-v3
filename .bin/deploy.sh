@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 cd ~
 git clone git@github.com:peterwilsoncc/peterwilson-v3-compiled.git
 pwd # Tech debt.
