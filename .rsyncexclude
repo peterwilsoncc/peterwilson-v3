@@ -1,5 +1,7 @@
 .*
 /php*.xml
+circle.yml
 composer.*
 config.local.yaml
 packag*.json
+/vendor
