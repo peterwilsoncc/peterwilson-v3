@@ -8,9 +8,10 @@ machine:
 
 database:
   override:
-    - mysql -u ubuntu -e "create database wordpress_test"
-    - mysql -u ubuntu -e "create user travis"
-    - mysql -u ubuntu -e "grant all on wordpress_test.* to 'travis'@'localhost'";
+    - mysql -u ubuntu -e "create database wordpress"
+    - mysql -u ubuntu -e "create user wordpress"
+    - mysql -u ubuntu -e "grant all on wordpress.* to 'wordpress'@'localhost'  identified by 'vagrantpassword'";
+    - mkdir -p /chassis # Nasty Hack.
 
 dependencies:
   pre:
