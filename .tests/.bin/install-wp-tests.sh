@@ -70,7 +70,7 @@ install_test_suite() {
 	if [ ! -d $WP_DEVELOP_DIR ]; then
 		# set up testing suite
 		mkdir -p $WP_DEVELOP_DIR
-		git clone git://develop.git.wordpress.org/ $WP_DEVELOP_DIR
+		git clone https://github.com/WordPress/wordpress-develop.git $WP_DEVELOP_DIR
 		cd $WP_DEVELOP_DIR
 		git fetch --all --tags
 		git checkout ${WP_TESTS_TAG}
