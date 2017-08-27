@@ -10,7 +10,7 @@ database:
   override:
     - mysql -u ubuntu -e "create database wordpress_test"
     - mysql -u ubuntu -e "create user travis"
-    - mysql -u ubuntu -e "grant all on wordpress_test.* to 'travis'@'localhost' identified by ''";
+    - mysql -u ubuntu -e "grant all on wordpress_test.* to 'travis'@'localhost'";
 
 dependencies:
   pre:
