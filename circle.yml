@@ -1,0 +1,45 @@
+machine:
+  php:
+    version: 7.0.4
+  node:
+    version: 6.1.0
+  environment:
+    WP_DEVELOP_DIR: /tmp/wordpress-tests-lib
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule foreach git prune
+    - git submodule foreach git fetch --all
+    - git submodule foreach git fetch --tags
+    - git submodule update --init --recursive || (rm -fr .git/config .git/modules && git submodule deinit -f . && git submodule update --init --recursive)
+
+
+database:
+  override:
+    - mysql -u ubuntu -e "create database wordpress"
+    - mysql -u ubuntu -e "create user wordpress"
+    - mysql -u ubuntu -e "grant all on wordpress.* to 'wordpress'@'localhost'  identified by 'vagrantpassword'";
+    - sudo mkdir -p /chassis # Nasty Hack.
+
+dependencies:
+  pre:
+    - composer config --list --global
+    - export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
+    - composer global require "phpunit/phpunit=5.7.*"
+    - composer install
+    - bash ./.tests/.bin/install-wp-tests.sh "wordpress" "wordpress" "vagrantpassword"
+    - mv $WP_DEVELOP_DIR/tests/phpunit/includes ./.tests/php
+    - echo "mysqli.default_socket = /var/run/mysqld/mysqld.sock" >> /opt/circleci/php/7.0.4/etc/php.ini
+  override:
+    - exit 0
+  post:
+  - wget https://phar.phpunit.de/phpunit-5.7.phar
+  - chmod +x phpunit-5.7.phar
+  - sudo mv phpunit-5.7.phar /usr/local/bin/phpunit
+
+deployment:
+  development:
+      branch: develop
+      commands:
+        - bash ./.bin/deploy.sh
