@@ -54,6 +54,5 @@ deployment:
         - git config user.email "auto-deploy@peterwilson.cc"
         - git config user.name "Auto deploy"
         - git add -A .
-        - git diff --quiet && git diff --staged --quiet || git commit -am 'Deploy $CIRCLE_BRANCH - Build
-        $CIRCLE_BUILD_NUM from $CIRCLE_SHA1'
+        - git diff --quiet && git diff --staged --quiet || git commit -am 'Deploy $CIRCLE_BRANCH - Build $CIRCLE_BUILD_NUM from $CIRCLE_SHA1'
         - git push -u origin $CIRCLE_BRANCH
