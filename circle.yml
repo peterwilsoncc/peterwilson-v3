@@ -39,7 +39,7 @@ dependencies:
   - sudo mv phpunit-5.7.phar /usr/local/bin/phpunit
 
 deployment:
-  staging:
-      branch: feature-circle-ci
+  development:
+      branch: develop
       commands:
         - bash ./.bin/deploy.sh
