@@ -40,7 +40,7 @@ dependencies:
 
 deployment:
   staging:
-      branch: feature//circle-ci
+      branch: feature-circle-ci
       commands:
         - cd ~
         - git clone git@github.com:peterwilsoncc/peterwilson-v3-compiled.git
