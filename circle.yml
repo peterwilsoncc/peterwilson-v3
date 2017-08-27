@@ -6,6 +6,15 @@ machine:
   environment:
     WP_DEVELOP_DIR: /tmp/wordpress-tests-lib
 
+checkout:
+  post:
+    - git submodule sync
+    - git submodule foreach git prune
+    - git submodule foreach git fetch --all
+    - git submodule foreach git fetch --tags
+    - git submodule update --init --recursive || (rm -fr .git/config .git/modules && git submodule deinit -f . && git submodule update --init --recursive)
+
+
 database:
   override:
     - mysql -u ubuntu -e "create database wordpress"
