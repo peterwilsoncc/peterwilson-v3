@@ -11,7 +11,7 @@ database:
     - mysql -u ubuntu -e "create database wordpress"
     - mysql -u ubuntu -e "create user wordpress"
     - mysql -u ubuntu -e "grant all on wordpress.* to 'wordpress'@'localhost'  identified by 'vagrantpassword'";
-    - mkdir -p /chassis # Nasty Hack.
+    - sudo mkdir -p /chassis # Nasty Hack.
 
 dependencies:
   pre:
@@ -19,7 +19,7 @@ dependencies:
     - export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
     - composer global require "phpunit/phpunit=5.7.*"
     - composer install
-    - bash ./.tests/.bin/install-wp-tests.sh "wordpress_test" "travis" ""
+    - bash ./.tests/.bin/install-wp-tests.sh "wordpress" "wordpress" "vagrantpassword"
     - mv $WP_DEVELOP_DIR/tests/phpunit/includes ./.tests/php
 #    - echo "mysqli.default_socket = /var/run/mysqld/mysqld.sock" >> /opt/circleci/php/7.1.0/etc/php.ini
   override:
