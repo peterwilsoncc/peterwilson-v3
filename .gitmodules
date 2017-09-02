@@ -10,3 +10,6 @@
 [submodule "content/mu-plugins/vendor/extended-template-parts"]
 	path = content/mu-plugins/vendor/extended-template-parts
 	url = https://github.com/johnbillion/extended-template-parts.git
+[submodule "content/mu-plugins/vendor/private"]
+	path = content/mu-plugins/vendor/private
+	url = git@github.com:peterwilsoncc/peterwilson-v3-private.git
