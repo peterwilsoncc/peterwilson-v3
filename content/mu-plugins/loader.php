@@ -19,6 +19,18 @@ $hm_mu_plugins = [
 	'vendor/extended-template-parts/extended-template-parts.php',
 ];
 
+foreach ( $hm_mu_plugins as $k => $file ) {
+	if ( file_exists( WPMU_PLUGIN_DIR . '/' . $file ) ) {
+		continue;
+	}
+	$file = wp_basename( $file );
+	trigger_error(
+		sprintf( __( 'Plugin file %s does not exist' ), esc_html( $file ) ),
+		E_USER_WARNING
+	);
+	unset( $hm_mu_plugins[ $k ] );
+}
+
 add_action( 'pre_current_active_plugins', function() use ( $hm_mu_plugins ) {
 	global $plugins, $wp_list_table;
 
