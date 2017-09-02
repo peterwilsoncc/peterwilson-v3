@@ -15,7 +15,6 @@ if ( ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) ) {
 $hm_mu_plugins = [
 	'vendor/cmb2/init.php',
 	'vendor/extended-cpts/extended-cpts.php',
-	'vendor/extended-taxos/extended-taxos.php',
 	'vendor/extended-template-parts/extended-template-parts.php',
 ];
 
