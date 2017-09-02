@@ -12,15 +12,15 @@ namespace PWCC\Tests;
 class Tests_Always_Pass extends \WP_UnitTestCase {
 
 	public function test_boolean() {
-		$this->assertTrue( true );
+		$this->assertNotTrue( true );
 	}
 
 	public function test_wp_version() {
-		$this->assertTrue( version_compare( $GLOBALS['wp_version'], '0.7', '>' ) );
+		$this->assertNotTrue( version_compare( $GLOBALS['wp_version'], '0.7', '>' ) );
 	}
 
 	public function test_db_version() {
 		$db_version = (int) get_option( 'db_version' );
-		$this->assertTrue( $db_version > 1 );
+		$this->assertNotTrue( $db_version > 1 );
 	}
 }
