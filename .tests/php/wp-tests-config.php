@@ -13,7 +13,6 @@ if ( file_exists( '/chassis' ) ) {
 } else {
 	define( 'DB_NAME', 'wordpress_test' );
 	define( 'DB_USER', 'root' );
-	define( 'DB_PASS', '' );
 	define( 'DB_PASSWORD', '' );
 }
 $table_prefix = 'wptests_';
