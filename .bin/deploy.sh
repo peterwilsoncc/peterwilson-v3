@@ -8,7 +8,7 @@ cd ~/peterwilson-v3-compiled
 git checkout -B $CIRCLE_BRANCH
 mv .git ~/_git
 cd ~/$CIRCLE_PROJECT_REPONAME
-rsync -rtu --delete --exclude-from='.rsyncexclude' --delete-excluded ./ ~/peterwilson-v3-compiled
+rsync -rtul --delete --exclude-from='.rsyncexclude' --delete-excluded ./ ~/peterwilson-v3-compiled
 cd -
 mv ~/_git ./.git
 git config user.email "auto-deploy@peterwilson.cc"
