@@ -1,0 +1,18 @@
+{
+	"extends": [
+		"stylelint-config-wordpress/scss"
+	],
+	"rules": {
+		"declaration-property-unit-whitelist": {
+			"line-height": []
+		},
+		"font-weight-notation": "named-where-possible",
+		"function-parentheses-space-inside": "always",
+		"max-line-length": 100,
+		"max-nesting-depth": [ 1, {
+			"ignore": [ "blockless-at-rules" ]
+		} ],
+		"selector-nested-pattern" : "((^|(,\\s*))&:{1,2}[a-zA-Z]+)+$",
+		"selector-pseudo-element-colon-notation" : "double"
+	}
+}
