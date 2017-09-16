@@ -1,0 +1,11 @@
+{
+  "name": "peterwilson.cc",
+  "version": "1.0.0-alpha",
+  "main": "index.js",
+  "repository": "git@github.com:peterwilsoncc/peterwilson-v3.git",
+  "author": "Peter Wilson",
+  "license": "MIT",
+  "devDependencies": {
+    "stylelint-config-wordpress": "^12.0.0"
+  }
+}

@@ -2,3 +2,4 @@
 /local-config.php
 /vendor/
 /content/debug.log
+/node_modules
