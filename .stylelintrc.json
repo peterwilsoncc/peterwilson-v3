@@ -13,6 +13,7 @@
 			"ignore": [ "blockless-at-rules" ]
 		} ],
 		"selector-nested-pattern" : "((^|(,\\s*))&:{1,2}[a-zA-Z]+)+$",
+		"selector-pseudo-class-parentheses-space-inside" : "always",
 		"selector-pseudo-element-colon-notation" : "double"
 	}
 }
