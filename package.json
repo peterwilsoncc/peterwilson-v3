@@ -6,7 +6,7 @@
   "author": "Peter Wilson",
   "license": "MIT",
   "scripts": {
-    "precommit": "exit 0",
+    "precommit": "grunt precommit",
 
     "lint:js" : "./vendor/bin/phpcs --standard=phpcs.ruleset.xml . --extensions=js",
     "lint:css" : "./node_modules/.bin/stylelint content/**/*.css",
