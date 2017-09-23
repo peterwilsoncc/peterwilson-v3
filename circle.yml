@@ -32,11 +32,18 @@ dependencies:
     - mv $WP_DEVELOP_DIR/tests/phpunit/includes ./.tests/php
     - echo "mysqli.default_socket = /var/run/mysqld/mysqld.sock" >> /opt/circleci/php/7.0.4/etc/php.ini
   override:
-    - exit 0
+    - yarn
   post:
   - wget https://phar.phpunit.de/phpunit-5.7.phar
   - chmod +x phpunit-5.7.phar
   - sudo mv phpunit-5.7.phar /usr/local/bin/phpunit
+
+test:
+  override:
+    - phpunit
+    - ./node_modules/.bin/stylelint content/**/*.css
+    - ./node_modules/.bin/stylelint content/**/*.scss
+    - ./vendor/bin/phpcs --standard=phpcs.ruleset.xml .
 
 deployment:
   development:
