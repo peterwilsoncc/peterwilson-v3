@@ -24,19 +24,12 @@ database:
 
 dependencies:
   pre:
-    - composer config --list --global
-    - export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
-    - composer global require "phpunit/phpunit=5.7.*"
     - composer install
     - bash ./.tests/.bin/install-wp-tests.sh "wordpress" "wordpress" "vagrantpassword"
     - mv $WP_DEVELOP_DIR/tests/phpunit/includes ./.tests/php
     - echo "mysqli.default_socket = /var/run/mysqld/mysqld.sock" >> /opt/circleci/php/7.0.4/etc/php.ini
   override:
     - yarn
-  post:
-  - wget https://phar.phpunit.de/phpunit-5.7.phar
-  - chmod +x phpunit-5.7.phar
-  - sudo mv phpunit-5.7.phar /usr/local/bin/phpunit
 
 test:
   override:
