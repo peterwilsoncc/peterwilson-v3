@@ -6,6 +6,7 @@
   "author": "Peter Wilson",
   "license": "MIT",
   "devDependencies": {
+    "husky": "^0.14.3",
     "stylelint-config-wordpress": "^12.0.0"
   }
 }
