@@ -33,7 +33,7 @@ dependencies:
 
 test:
   override:
-    - grunt prerelease
+    - ./node_modules/.bin/grunt prerelease
 
 deployment:
   development:
