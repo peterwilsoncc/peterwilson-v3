@@ -16,7 +16,7 @@ WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress/}
 
 download() {
 	if [ `which curl` ]; then
-		curl -s "$1" > "$2";
+		curl -s -L "$1" > "$2";
 	elif [ `which wget` ]; then
 		wget -nv -O "$2" "$1"
 	fi
@@ -69,11 +69,16 @@ install_test_suite() {
 	# set up testing suite if it doesn't yet exist
 	if [ ! -d $WP_DEVELOP_DIR ]; then
 		# set up testing suite
+		if [ $WP_VERSION == 'latest' ]; then
+			local ARCHIVE_NAME='master'
+		else
+			local ARCHIVE_NAME="$WP_VERSION"
+		fi
+
 		mkdir -p $WP_DEVELOP_DIR
-		git clone https://github.com/WordPress/wordpress-develop.git $WP_DEVELOP_DIR
-		cd $WP_DEVELOP_DIR
-		git fetch --all --tags
-		git checkout ${WP_TESTS_TAG}
+
+		download https://github.com/WordPress/wordpress-develop/archive/${ARCHIVE_NAME}.tar.gz /tmp/wp-dev.tar.gz
+		tar --strip-components=1 -zxmf /tmp/wp-dev.tar.gz -C $WP_DEVELOP_DIR
 	fi
 
 	cd $WP_DEVELOP_DIR
