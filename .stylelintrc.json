@@ -12,6 +12,13 @@
 		"max-nesting-depth": [ 1, {
 			"ignore": [ "blockless-at-rules" ]
 		} ],
+		"rule-empty-line-before" : [
+			"always",
+			{
+				"except": [ "first-nested" ],
+				"ignore": [ "after-comment" ]
+			}
+		],
 		"selector-nested-pattern" : "((^|(,\\s*))&:{1,2}[a-zA-Z]+)+$",
 		"selector-pseudo-class-parentheses-space-inside" : "always",
 		"selector-pseudo-element-colon-notation" : "double"
