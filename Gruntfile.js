@@ -4,6 +4,63 @@ module.exports = function ( grunt ) {
 	var path = require( 'path' );
 	var fs   = require( 'fs' );
 
+	function commonTaskCallback() {
+		grunt.util.spawn( {
+			cmd: this.data.cmd,
+			args: this.data.args,
+			opts: { stdio: 'inherit' }
+		}, this.async() );
+	}
+
+	// Project configuration.
+	grunt.initConfig( {
+		phpunit: {
+			'default': {
+				cmd: '/bin/sh',
+				args: [ '.tests/.bin/phpunit.sh' ]
+			}
+		},
+
+		phplint: {
+			'default': {
+				cmd: 'yarn',
+				args: [ 'lint:php' ]
+			}
+		},
+
+		jslint: {
+			default: {
+				cmd: 'yarn',
+				args: [ 'lint:js' ]
+			}
+		},
+
+		csslint: {
+			default: {
+				cmd: 'yarn',
+				args: [ 'lint:css' ]
+			}
+		},
+
+		scsslint: {
+			default: {
+				cmd: 'yarn',
+				args: [ 'lint:scss' ]
+			}
+		}
+	} );
+
+	// Register tasks.
+	grunt.registerMultiTask( 'phpunit', 'Runs PHPUnit tests.', commonTaskCallback );
+
+	grunt.registerMultiTask( 'phplint', 'Runs PHP code sniffs.', commonTaskCallback );
+
+	grunt.registerMultiTask( 'jslint', 'Lint JS files.', commonTaskCallback );
+
+	grunt.registerMultiTask( 'csslint', 'Lint CSS files.', commonTaskCallback );
+
+	grunt.registerMultiTask( 'scsslint', 'Lint SCSS files.', commonTaskCallback );
+
 	grunt.registerTask( 'precommit', 'Runs test and build tasks in preparation for a commit', function () {
 		var done = this.async();
 		var map = {
@@ -79,15 +136,15 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'precommit:js', [ ] );
+	grunt.registerTask( 'precommit:js', [ 'jslint' ] );
 
-	grunt.registerTask( 'precommit:css', [ ] );
+	grunt.registerTask( 'precommit:css', [ 'csslint' ] );
 
-	grunt.registerTask( 'precommit:scss', [ ] );
+	grunt.registerTask( 'precommit:scss', [ 'scsslint' ] );
 
 	grunt.registerTask( 'precommit:image', [ ] );
 
-	grunt.registerTask( 'precommit:php', [ ] );
+	grunt.registerTask( 'precommit:php', [ 'phplint', 'phpunit' ] );
 
 	grunt.registerTask( 'prerelease', [
 		'precommit:js',
