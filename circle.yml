@@ -33,10 +33,7 @@ dependencies:
 
 test:
   override:
-    - phpunit
-    - ./node_modules/.bin/stylelint content/**/*.css
-    - ./node_modules/.bin/stylelint content/**/*.scss
-    - ./vendor/bin/phpcs --standard=phpcs.ruleset.xml .
+    - grunt prerelease
 
 deployment:
   development:
