@@ -6,7 +6,17 @@
   "author": "Peter Wilson",
   "license": "MIT",
   "scripts": {
-    "precommit": "exit 0"
+    "precommit": "exit 0",
+
+    "lint:js" : "./vendor/bin/phpcs --standard=phpcs.ruleset.xml . --extensions=js",
+    "lint:css" : "./node_modules/.bin/stylelint content/**/*.css",
+    "lint:scss" : "./node_modules/.bin/stylelint content/**/*.scss",
+    "lint:php" : "./vendor/bin/phpcs --standard=phpcs.ruleset.xml . --extensions=php",
+    "lint:style": "yarn lint:scss && yarn lint:css",
+    "lint": "yarn lint:php && yarn lint:js && yarn lint:style",
+
+    "test:php" : "sh ./.tests/.bin/phpunit.sh",
+    "test" : "yarn test:php"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
