@@ -1,6 +1,14 @@
 <?php
 // @codingStandardsIgnoreFile
 
+// On Chassis, tests can silently fail, so introduce a shutdown function to print the last error.
+// Throwing an exception sends a non-zero exit code.
+register_shutdown_function( function() {
+	$error = error_get_last();
+	if ( $error ) {
+		throw new Exception( $error );
+	}
+} );
 
 if ( getenv( 'WP_DEVELOP_DIR' ) ) {
 	$wp_develop_dir = getenv( 'WP_DEVELOP_DIR' );
