@@ -30,7 +30,7 @@ require_once $wp_tests_dir . '/includes/functions.php';
 
 function _register_theme() {
 
-	$theme_dir = dirname( dirname( dirname( __FILE__ ) ) ) . '/themes/peterwilson-v03';
+	$theme_dir = dirname( dirname( dirname( __FILE__ ) ) ) . '/themes/peter-wilson-2017';
 	$current_theme = basename( $theme_dir );
 
 	register_theme_directory( dirname( $theme_dir ) );
