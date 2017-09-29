@@ -17,8 +17,22 @@ function bootstrap() {
 	// At priority 0 to ensure it runs before enqueued scripts and styles are echoed.
 	add_action( 'wp_head', __NAMESPACE__ . '\\javascript_detection', 0 );
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 	setup_theme_support();
 	set_content_width();
+}
+
+/**
+ * Enqueue scripts and styles for WP.
+ */
+function enqueue_assets() {
+	// Let's get some style.
+	wp_enqueue_style(
+		'peter-wilson-2017-theme',
+		get_stylesheet_directory_uri() . '/assets/css/theme.css',
+		[],
+		wp_get_theme()->get( 'Version' )
+	);
 }
 
 /**
