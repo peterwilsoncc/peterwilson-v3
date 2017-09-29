@@ -26,7 +26,7 @@ function bootstrap() {
  * Runs on the hook `http_request_args`.
  *
  * @param array  $args The array of HTTP request args.
- * @param string $url          The request URL.
+ * @param string $url  The request URL.
  * @return array The array of HTTP request args modified to remove this theme.
  */
 function disable_theme_checks( array $args, string $url ) {
