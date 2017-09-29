@@ -15,6 +15,8 @@ namespace PWCC\PeterWilson2017;
  * Runs on the `after_setup_theme` hook.
  */
 function bootstrap() {
+	// At priority 0 to ensure it runs before enqueued scripts and styles are echoed.
+	add_action( 'wp_head', __NAMESPACE__ . '\\javascript_detection', 0 );
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
 	setup_theme_support();
 }
@@ -50,6 +52,18 @@ function setup_theme_support() {
 	// Generate title tag automatically.
 	add_theme_support( 'title-tag' );
 }
+
+/**
+ * Handles JavaScript detection.
+ *
+ * Adds a `js` class to the root `<html>` element when JavaScript is detected.
+ *
+ * Runs on `wp_head, 0`.
+ */
+function javascript_detection() {
+	echo "<script>(function(h){h.className=h.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>\n";
+}
+
 
 /**
  * Prevent WP checking for theme updates.

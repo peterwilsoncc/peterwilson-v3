@@ -9,7 +9,7 @@
  */
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?> <?php body_class( [] ); ?>>
+<html <?php language_attributes(); ?> <?php body_class( [ 'no-js' ] ); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
