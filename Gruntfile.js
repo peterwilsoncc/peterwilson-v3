@@ -47,6 +47,20 @@ module.exports = function ( grunt ) {
 				cmd: 'yarn',
 				args: [ 'lint:scss' ]
 			}
+		},
+
+		sass: {
+			theme: {
+				options: {
+					indentType: 'tab',
+					indentWidth: 1,
+					outputStyle: 'expanded',
+					sourceMap: true
+				},
+				files: {
+					'content/themes/peter-wilson-2017/assets/css/theme.css' : 'content/themes/peter-wilson-2017/assets/css/theme.scss'
+				}
+			}
 		}
 	} );
 
@@ -135,6 +149,15 @@ module.exports = function ( grunt ) {
 			);
 		}
 	} );
+
+	// all the plugins that is needed for above tasks
+	grunt.loadNpmTasks( 'grunt-sass' );
+
+	grunt.registerTask( 'build:css', [ 'sass' ] );
+
+	grunt.registerTask( 'build', [
+		'build:css'
+	] );
 
 	grunt.registerTask( 'precommit:js', [ 'jslint' ] );
 
