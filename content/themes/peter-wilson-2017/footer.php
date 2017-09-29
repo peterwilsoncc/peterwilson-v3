@@ -7,3 +7,7 @@
  * @copyright 2017 Peter Wilson
  * @license   GPLv2
  */
+wp_footer();
+?>
+</body>
+</html>
