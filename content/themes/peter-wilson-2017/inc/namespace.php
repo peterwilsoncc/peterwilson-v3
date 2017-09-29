@@ -21,7 +21,7 @@ function bootstrap() {
 /**
  * Prevent WP checking for theme updates.
  *
- * Ensures that WordPress does check for updates to this theme on WordPress.org.
+ * Ensures that WordPress does not check for updates to this theme on WordPress.org.
  *
  * Runs on the hook `http_request_args`.
  *
