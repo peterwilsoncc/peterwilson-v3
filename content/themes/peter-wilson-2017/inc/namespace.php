@@ -19,6 +19,7 @@ function bootstrap() {
 	add_action( 'wp_head', __NAMESPACE__ . '\\javascript_detection', 0 );
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
 	setup_theme_support();
+	set_content_width();
 }
 
 /**
@@ -51,6 +52,24 @@ function setup_theme_support() {
 
 	// Generate title tag automatically.
 	add_theme_support( 'title-tag' );
+}
+
+/**
+ * Set the content width of the theme.
+ *
+ * WordPress™ requires this and sure, why not.
+ *
+ * @global int $content_width The content width.
+ */
+function set_content_width() {
+	$content_width = 1160;
+
+	// Check if is post or page and there is a sidebar.
+	if ( is_singular() && is_active_sidebar( 'sidebar-1' ) ) {
+		$content_width = 760;
+	}
+
+	$GLOBALS['content_width'] = $content_width;
 }
 
 /**
