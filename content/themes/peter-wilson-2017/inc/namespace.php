@@ -16,6 +16,39 @@ namespace PWCC\PeterWilson2017;
  */
 function bootstrap() {
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
+	setup_theme_support();
+}
+
+/**
+ * Add support for various theme features.
+ *
+ * Theme features supported are:
+ * - post formats
+ * - feed links
+ * - html5 (complete)
+ * - title tag
+ */
+function setup_theme_support() {
+	// Support post formats.
+	add_theme_support( 'post-formats', [ 'status', 'image' ] );
+
+	// RSS Feeds.
+	add_theme_support( 'automatic-feed-links' );
+
+	// HTML5.
+	add_theme_support(
+		'html5',
+		[
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		]
+	);
+
+	// Generate title tag automatically.
+	add_theme_support( 'title-tag' );
 }
 
 /**
