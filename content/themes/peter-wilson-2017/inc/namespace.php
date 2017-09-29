@@ -4,7 +4,6 @@
  * @author    Peter Wilson <wilson@peterwilson.cc>
  * @copyright 2017 Peter Wilson
  * @license   GPLv2
- * @version   1.0.0-alpha
  */
 
 namespace PWCC\PeterWilson2017;
@@ -82,7 +81,6 @@ function set_content_width() {
 function javascript_detection() {
 	echo "<script>(function(h){h.className=h.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>\n";
 }
-
 
 /**
  * Prevent WP checking for theme updates.
