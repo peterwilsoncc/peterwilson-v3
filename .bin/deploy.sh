@@ -2,6 +2,7 @@
 
 set -ex
 
+./node_modules/.bin/grunt build
 cd ~
 git clone git@github.com:peterwilsoncc/peterwilson-v3-compiled.git
 cd ~/peterwilson-v3-compiled

@@ -49,6 +49,24 @@ module.exports = function ( grunt ) {
 			}
 		},
 
+		cssmin: {
+			options: {
+				level: 2,
+				sourceMap: true,
+				mergeIntoShorthands: false,
+				roundingPrecision: -1
+			},
+			theme: {
+				files: [ {
+					expand: true,
+					cwd: 'content/themes/peter-wilson-2017/assets/css',
+					src: ['*.css', '!**/*.min.css'],
+					dest: 'content/themes/peter-wilson-2017/assets/css',
+					ext: '.min.css'
+				} ]
+			}
+		},
+
 		sass: {
 			theme: {
 				options: {
@@ -151,9 +169,10 @@ module.exports = function ( grunt ) {
 	} );
 
 	// all the plugins that is needed for above tasks
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-sass' );
 
-	grunt.registerTask( 'build:css', [ 'sass' ] );
+	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
 
 	grunt.registerTask( 'build', [
 		'build:css'

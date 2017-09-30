@@ -26,10 +26,12 @@ function bootstrap() {
  * Enqueue scripts and styles for WP.
  */
 function enqueue_assets() {
+	$suffix = SCRIPT_DEBUG ? '' : '.min';
+
 	// Let's get some style.
 	wp_enqueue_style(
 		'peter-wilson-2017-theme',
-		get_stylesheet_directory_uri() . '/assets/css/theme.css',
+		get_stylesheet_directory_uri() . "/assets/css/theme{$suffix}.css",
 		[],
 		wp_get_theme()->get( 'Version' )
 	);
