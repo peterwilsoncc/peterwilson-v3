@@ -11,4 +11,3 @@ namespace PWCC\PeterWilson2017;
 include __DIR__ . '/inc/namespace.php';
 
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\bootstrap' );
-
