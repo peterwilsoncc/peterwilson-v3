@@ -51,7 +51,15 @@ module.exports = function ( grunt ) {
 
 		cssmin: {
 			options: {
-				level: 2,
+				level: {
+					1: {
+						specialComments: false
+					},
+					2: {
+						mergeSemantically: true,
+						restructureRules: true
+					}
+				},
 				sourceMap: true,
 				mergeIntoShorthands: false,
 				roundingPrecision: -1
