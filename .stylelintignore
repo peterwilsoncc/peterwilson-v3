@@ -2,3 +2,4 @@
 node_modules/**.*
 **/vendor/**/*.*
 wp/**/*.*
+content/themes/peter-wilson-2017/assets/css/**/*.css
