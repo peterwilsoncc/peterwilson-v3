@@ -75,9 +75,13 @@ module.exports = function ( grunt ) {
 					outputStyle: 'expanded',
 					sourceMap: true
 				},
-				files: {
-					'content/themes/peter-wilson-2017/assets/css/theme.css' : 'content/themes/peter-wilson-2017/assets/css/theme.scss'
-				}
+				files: [ {
+					expand: true,
+					cwd: 'content/themes/peter-wilson-2017/assets/css',
+					src: ['*.scss'],
+					dest: 'content/themes/peter-wilson-2017/assets/css',
+					ext: '.css'
+				} ]
 			}
 		}
 	} );
