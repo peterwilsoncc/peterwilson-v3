@@ -83,6 +83,13 @@ module.exports = function ( grunt ) {
 					ext: '.css'
 				} ]
 			}
+		},
+
+		watch: {
+			style: {
+				files: [ 'content/**/*.scss' ],
+				tasks: [ 'sass' ]
+			}
 		}
 	} );
 
@@ -174,6 +181,7 @@ module.exports = function ( grunt ) {
 
 	// all the plugins that is needed for above tasks
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
 
 	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
