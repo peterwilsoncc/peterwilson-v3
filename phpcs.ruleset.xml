@@ -11,4 +11,7 @@
 
 	<!-- Exclude build directories -->
 	<exclude-pattern>*/content/themes/peter-wilson-2017/assets/dist/*</exclude-pattern>
+
+	<!-- Exclude webpack config because it's too hard -->
+	<exclude-pattern>*/webpack.config.js</exclude-pattern>
 </ruleset>

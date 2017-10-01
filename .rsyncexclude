@@ -8,3 +8,4 @@ packag*.json
 /node_modules
 Gruntfile.js
 yarn.lock
+webpack.config.js
