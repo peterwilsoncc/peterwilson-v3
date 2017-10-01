@@ -124,6 +124,10 @@ module.exports = function ( grunt ) {
 		},
 
 		watch: {
+			script: {
+				files: [ 'content/**/*.js', '!**/dist/**/*.js' ],
+				tasks: [ 'babel' ]
+			},
 			style: {
 				files: [ 'content/**/*.scss' ],
 				tasks: [ 'sass' ]
