@@ -16,12 +16,11 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				include: [
-					path.resolve( __dirname, 'src' ),
+					path.resolve( __dirname, 'content' ),
 				],
-				loader: 'babel-loader',
-				options: {
-					presets: ['es2015'],
-				},
+				use: {
+					loader: 'babel-loader',
+				}
 			},
 		],
 	},
