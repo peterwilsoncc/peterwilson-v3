@@ -31,7 +31,15 @@ function enqueue_assets() {
 	// Let's get some style.
 	wp_enqueue_style(
 		'peter-wilson-2017-theme',
-		get_stylesheet_directory_uri() . "/assets/css/theme{$suffix}.css",
+		get_stylesheet_directory_uri() . "/assets/dist/css/theme{$suffix}.css",
+		[],
+		wp_get_theme()->get( 'Version' )
+	);
+
+	// Load the header script.
+	wp_enqueue_script(
+		'peter-wilson-2017-theme-header',
+		get_stylesheet_directory_uri() . "/assets/dist/js/theme-header{$suffix}.js",
 		[],
 		wp_get_theme()->get( 'Version' )
 	);

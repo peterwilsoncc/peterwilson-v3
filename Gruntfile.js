@@ -49,6 +49,21 @@ module.exports = function ( grunt ) {
 			}
 		},
 
+		babel: {
+			options: {
+				sourceMap: true
+			},
+			dist: {
+				files: [ {
+					expand: true,
+					cwd: 'content/themes/peter-wilson-2017/assets/src/js',
+					src: ['*.js'],
+					dest: 'content/themes/peter-wilson-2017/assets/dist/js',
+					ext: '.js'
+				} ]
+			}
+		},
+
 		cssmin: {
 			options: {
 				level: {
@@ -67,9 +82,9 @@ module.exports = function ( grunt ) {
 			theme: {
 				files: [ {
 					expand: true,
-					cwd: 'content/themes/peter-wilson-2017/assets/css',
+					cwd: 'content/themes/peter-wilson-2017/assets/dist/css',
 					src: ['*.css', '!**/*.min.css'],
-					dest: 'content/themes/peter-wilson-2017/assets/css',
+					dest: 'content/themes/peter-wilson-2017/assets/dist/css',
 					ext: '.min.css'
 				} ]
 			}
@@ -85,10 +100,25 @@ module.exports = function ( grunt ) {
 				},
 				files: [ {
 					expand: true,
-					cwd: 'content/themes/peter-wilson-2017/assets/css',
+					cwd: 'content/themes/peter-wilson-2017/assets/src/css',
 					src: ['*.scss'],
-					dest: 'content/themes/peter-wilson-2017/assets/css',
+					dest: 'content/themes/peter-wilson-2017/assets/dist/css',
 					ext: '.css'
+				} ]
+			}
+		},
+
+		uglify: {
+			theme: {
+				options: {
+					sourceMap: true,
+				},
+				files: [ {
+					expand: true,
+					cwd: 'content/themes/peter-wilson-2017/assets/dist/js',
+					src: ['*.js', '!**/*.min.js'],
+					dest: 'content/themes/peter-wilson-2017/assets/dist/js',
+					ext: '.min.js'
 				} ]
 			}
 		},
@@ -188,14 +218,19 @@ module.exports = function ( grunt ) {
 	} );
 
 	// all the plugins that is needed for above tasks
+	grunt.loadNpmTasks( 'grunt-babel' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
+
+	grunt.registerTask( 'build:js', [ 'babel', 'uglify' ] );
 
 	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
 
 	grunt.registerTask( 'build', [
-		'build:css'
+		'build:js',
+		'build:css',
 	] );
 
 	grunt.registerTask( 'precommit:js', [ 'jslint' ] );
