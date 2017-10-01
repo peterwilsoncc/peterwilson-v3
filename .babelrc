@@ -6,7 +6,6 @@
 			},
 			"modules": false,
 			"useBuiltIns": true,
-			"debug": true
 		}]
 	]
 }

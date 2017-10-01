@@ -21,6 +21,13 @@ module.exports = function ( grunt ) {
 			}
 		},
 
+		buildjs: {
+			'default': {
+				cmd: 'yarn',
+				args: [ 'build:js' ]
+			}
+		},
+
 		phplint: {
 			'default': {
 				cmd: 'yarn',
@@ -111,7 +118,7 @@ module.exports = function ( grunt ) {
 		watch: {
 			script: {
 				files: [ 'content/**/*.js', '!**/dist/**/*.js' ],
-				tasks: [ ]
+				tasks: [ 'buildjs' ]
 			},
 			style: {
 				files: [ 'content/**/*.scss' ],
@@ -124,6 +131,8 @@ module.exports = function ( grunt ) {
 	grunt.registerMultiTask( 'phpunit', 'Runs PHPUnit tests.', commonTaskCallback );
 
 	grunt.registerMultiTask( 'phplint', 'Runs PHP code sniffs.', commonTaskCallback );
+
+	grunt.registerMultiTask( 'buildjs', 'Build JS.', commonTaskCallback );
 
 	grunt.registerMultiTask( 'jslint', 'Lint JS files.', commonTaskCallback );
 
@@ -212,7 +221,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
 
-	grunt.registerTask( 'build:js', [ 'uglify' ] );
+	grunt.registerTask( 'build:js', [ 'buildjs', 'uglify' ] );
 
 	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
 
