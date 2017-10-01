@@ -23,6 +23,7 @@
     "fontfaceobserver": "^2.0.13",
     "grunt": "^1.0.1",
     "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-uglify": "^3.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-sass": "^2.0.0",
     "husky": "^0.14.3",

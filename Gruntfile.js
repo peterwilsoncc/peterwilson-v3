@@ -93,6 +93,21 @@ module.exports = function ( grunt ) {
 			}
 		},
 
+		uglify: {
+			theme: {
+				options: {
+					sourceMap: true,
+				},
+				files: [ {
+					expand: true,
+					cwd: 'content/themes/peter-wilson-2017/assets/dist/js',
+					src: ['*.js', '!**/*.min.js'],
+					dest: 'content/themes/peter-wilson-2017/assets/dist/js',
+					ext: '.min.js'
+				} ]
+			}
+		},
+
 		watch: {
 			script: {
 				files: [ 'content/**/*.js', '!**/dist/**/*.js' ],
@@ -193,10 +208,11 @@ module.exports = function ( grunt ) {
 
 	// all the plugins that is needed for above tasks
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
 
-	grunt.registerTask( 'build:js', [ ] );
+	grunt.registerTask( 'build:js', [ 'uglify' ] );
 
 	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
 
