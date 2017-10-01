@@ -3,6 +3,7 @@ var path = require( 'path' );
 
 module.exports = {
 	// Load in src/main.js as our input file...
+	devtool: 'source-map',
 	entry: {
 		'content/themes/peter-wilson-2017/assets/dist/js/theme-header': './content/themes/peter-wilson-2017/assets/src/js/theme-header',
 	},
