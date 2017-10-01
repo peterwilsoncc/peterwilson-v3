@@ -49,21 +49,6 @@ module.exports = function ( grunt ) {
 			}
 		},
 
-		babel: {
-			options: {
-				sourceMap: true
-			},
-			dist: {
-				files: [ {
-					expand: true,
-					cwd: 'content/themes/peter-wilson-2017/assets/src/js',
-					src: ['*.js'],
-					dest: 'content/themes/peter-wilson-2017/assets/dist/js',
-					ext: '.js'
-				} ]
-			}
-		},
-
 		cssmin: {
 			options: {
 				level: {
@@ -126,7 +111,7 @@ module.exports = function ( grunt ) {
 		watch: {
 			script: {
 				files: [ 'content/**/*.js', '!**/dist/**/*.js' ],
-				tasks: [ 'babel' ]
+				tasks: [ ]
 			},
 			style: {
 				files: [ 'content/**/*.scss' ],
@@ -222,13 +207,12 @@ module.exports = function ( grunt ) {
 	} );
 
 	// all the plugins that is needed for above tasks
-	grunt.loadNpmTasks( 'grunt-babel' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
 
-	grunt.registerTask( 'build:js', [ 'babel', 'uglify' ] );
+	grunt.registerTask( 'build:js', [ 'uglify' ] );
 
 	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
 
