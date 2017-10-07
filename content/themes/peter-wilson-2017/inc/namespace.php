@@ -28,6 +28,13 @@ function bootstrap() {
 function enqueue_assets() {
 	$suffix = SCRIPT_DEBUG ? '' : '.min';
 
+	wp_enqueue_style(
+		'peter-wilson-2017-gfonts-1',
+		'https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono',
+		[],
+		null
+	);
+
 	// Let's get some style.
 	wp_enqueue_style(
 		'peter-wilson-2017-theme',

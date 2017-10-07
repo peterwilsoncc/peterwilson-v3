@@ -1,6 +1,27 @@
-html {
+body {
 	font-family: Arial, sans-serif;
 	font-size: ( 18 / 16 ) * 1em;
 	letter-spacing: 0.05px;
 	line-height: ( 30 / 18 );
+}
+
+pre,
+code,
+kbd,
+samp {
+	font-family: "Courier New", monospace;
+	letter-spacing: normal;
+}
+
+.wf-set-1 body {
+	font-family: Roboto, Arial, sans-serif;
+	letter-spacing: normal;
+}
+
+.wf-set-1 pre,
+.wf-set-1 code,
+.wf-set-1 kbd,
+.wf-set-1 samp {
+	font-family: "Roboto Mono", monospace;
+	letter-spacing: normal;
 }
