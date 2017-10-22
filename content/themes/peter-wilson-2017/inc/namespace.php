@@ -18,6 +18,7 @@ function bootstrap() {
 	add_action( 'wp_head', __NAMESPACE__ . '\\javascript_detection', 0 );
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
+	add_action( 'wp_resource_hints', __NAMESPACE__ . '\\webfonts_set_two', 10, 2 );
 	setup_theme_support();
 	set_content_width();
 }
@@ -50,6 +51,39 @@ function enqueue_assets() {
 		[],
 		wp_get_theme()->get( 'Version' )
 	);
+}
+
+/**
+ * Add second stage web fonts to prefetch header.
+ *
+ * Runs on `wp_resource_hints, 10`.
+ *
+ * @param array  $urls   URLs to print for resource hints.
+ * @param string $method The relation type the URLs are printed for, e.g. 'preconnect' or 'prerender'.
+ * @return array URLS to print for resource hints.
+ */
+function webfonts_set_two( $hints, $method ) {
+	if ( 'prefetch' !== $method ) {
+		return $hints;
+	}
+
+	$font_set_two = [
+		'family' => 'Roboto+Mono:400i,700,700i|Roboto:400i,500,500i,700,700i',
+	];
+
+	$font_set_two_url = add_query_arg(
+		$font_set_two,
+		'https://fonts.googleapis.com/css'
+	);
+
+	$hints[] = [
+		'crossorigin',
+		'as'   => 'style',
+		'pr'   => 1.0,
+		'href' => $font_set_two_url,
+	];
+
+	return $hints;
 }
 
 /**
