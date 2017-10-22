@@ -51,6 +51,15 @@ function enqueue_assets() {
 		[],
 		wp_get_theme()->get( 'Version' )
 	);
+
+	// Load the footer script.
+	wp_enqueue_script(
+		'peter-wilson-2017-theme-footer',
+		get_stylesheet_directory_uri() . "/assets/dist/js/theme-footer{$suffix}.js",
+		[],
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
 }
 
 /**

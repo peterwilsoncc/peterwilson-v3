@@ -6,6 +6,7 @@ module.exports = {
 	devtool: 'source-map',
 	entry: {
 		'content/themes/peter-wilson-2017/assets/dist/js/theme-header': './content/themes/peter-wilson-2017/assets/src/js/theme-header',
+		'content/themes/peter-wilson-2017/assets/dist/js/theme-footer': './content/themes/peter-wilson-2017/assets/src/js/theme-footer',
 	},
 	output: {
 		path: __dirname,
