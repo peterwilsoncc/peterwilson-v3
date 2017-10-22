@@ -29,6 +29,7 @@ const FontFaceObserver = require( '../../../../../../node_modules/fontfaceobserv
 		fonts: [
 			{ name: 'Roboto', config: {}},
 			{ name: 'Roboto Mono', config: {}},
+			{ name: 'Roboto Slab', config: { weight: 700 }},
 		],
 	};
 

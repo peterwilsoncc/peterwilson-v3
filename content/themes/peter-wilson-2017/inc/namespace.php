@@ -30,7 +30,7 @@ function enqueue_assets() {
 
 	wp_enqueue_style(
 		'peter-wilson-2017-gfonts-1',
-		'https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono',
+		'https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Roboto+Slab:700',
 		[],
 		null
 	);
