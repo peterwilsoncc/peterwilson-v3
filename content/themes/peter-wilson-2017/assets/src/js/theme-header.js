@@ -3,6 +3,7 @@ const FontFaceObserver = require( '../../../../../../node_modules/fontfaceobserv
 ( function ( window ){
 	window.PWCC = window.PWCC || {};
 	const PWCC = window.PWCC;
+	const document = window.document;
 
 	const loadFontLibrary = function ( config ) {
 		let allPromises = [];
@@ -34,6 +35,21 @@ const FontFaceObserver = require( '../../../../../../node_modules/fontfaceobserv
 	};
 
 	loadFontLibrary( configSetOne );
+
+	PWCC.domReady = new window.Promise( function ( resolve ) {
+		function onReady() {
+			resolve();
+			document.removeEventListener( 'DOMContentLoaded', onReady, true );
+			window.removeEventListener( 'load', onReady, true );
+		}
+
+		if ( document.readyState === 'complete' ) {
+			resolve();
+		} else {
+			document.addEventListener( 'DOMContentLoaded', onReady, true );
+			window.addEventListener( 'load', onReady, true );
+		}
+	} );
 
 	PWCC.loadFontLibrary = loadFontLibrary;
 } )( window );
