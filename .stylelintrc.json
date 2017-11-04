@@ -19,6 +19,7 @@
 				"ignore": [ "after-comment" ]
 			}
 		],
+		"selector-class-pattern" : "^((is|has|util)\\-)?[A-Z][a-zA-Z0-9]*((\\-|\\_)[A-Z0-9][a-zA-Z0-9]*)*$",
 		"selector-nested-pattern" : "((^|(,\\s*))&:{1,2}[a-zA-Z]+)+$",
 		"selector-pseudo-class-parentheses-space-inside" : "always",
 		"selector-pseudo-element-colon-notation" : "double"
