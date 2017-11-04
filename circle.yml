@@ -1,6 +1,6 @@
 machine:
   php:
-    version: 7.0.4
+    version: 7.0.24
   node:
     version: 8.5.0
   environment:
@@ -27,7 +27,7 @@ dependencies:
     - composer install
     - bash ./.tests/.bin/install-wp-tests.sh "wordpress" "wordpress" "vagrantpassword"
     - mv $WP_DEVELOP_DIR/tests/phpunit/includes ./.tests/php
-    - echo "mysqli.default_socket = /var/run/mysqld/mysqld.sock" >> /opt/circleci/php/7.0.4/etc/php.ini
+    - echo "mysqli.default_socket = /var/run/mysqld/mysqld.sock" >> /opt/circleci/php/7.0.24/etc/php.ini
   override:
     - yarn
 
