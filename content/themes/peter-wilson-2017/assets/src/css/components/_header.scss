@@ -1,0 +1,13 @@
+.Header {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.Header_Logo {
+	width: 100px;
+	flex-grow: 0;
+}
+
+.Header_Menu {
+	flex-grow: 1;
+}

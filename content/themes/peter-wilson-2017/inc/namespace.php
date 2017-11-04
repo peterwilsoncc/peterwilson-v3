@@ -20,6 +20,7 @@ function bootstrap() {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 	add_action( 'wp_resource_hints', __NAMESPACE__ . '\\webfonts_set_two', 10, 2 );
 	setup_theme_support();
+	setup_theme_menus();
 	set_content_width();
 }
 
@@ -125,6 +126,19 @@ function setup_theme_support() {
 
 	// Generate title tag automatically.
 	add_theme_support( 'title-tag' );
+}
+
+/**
+ * Add support for native WordPress menus.
+ *
+ * Registers two menu locations, the primary and stiemap menu. The IDs come
+ * from the faux
+ */
+function setup_theme_menus() {
+	register_nav_menus( [
+		'header' => __( 'Primary menu (header).', 'pwcc' ),
+		'footer' => __( 'Footer site map.', 'pwcc' ),
+	] );
 }
 
 /**
