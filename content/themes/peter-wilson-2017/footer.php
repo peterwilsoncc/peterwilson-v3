@@ -7,6 +7,11 @@
  * @copyright 2017 Peter Wilson
  * @license   GPLv2
  */
+?>
+
+</div>
+<!-- // .Page -->
+<?php
 wp_footer();
 ?>
 </body>

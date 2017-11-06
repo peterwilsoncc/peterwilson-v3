@@ -19,6 +19,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<div class="Page">
 	<header class="Header" role="banner">
 		<div class="Header_Logo">
 			<a href="<?php echo home_url() ?>">
