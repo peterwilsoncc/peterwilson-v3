@@ -8,7 +8,7 @@
  * @license   GPLv2
  */
 ?>
-	<footer class="Footer">
+	<footer class="Page_Footer Footer">
 		<?php
 		// @codingStandardsIgnoreStart
 		// Ignoring to allow spaces for alignment.

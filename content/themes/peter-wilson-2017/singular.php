@@ -10,8 +10,11 @@
 
 get_header();
 ?>
-<main class="Main Main-Singular">
-
+<div class="Page_SectionLead">
+</div>
+<main class="Page_Main Main">
 </main>
+<div class="Page_SectionFollow">
+</div>
 <?php
 get_footer();

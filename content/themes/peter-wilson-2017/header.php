@@ -20,7 +20,7 @@
 </head>
 <body <?php body_class(); ?>>
 <div class="Page">
-	<header class="Header" role="banner">
+	<header class="Page_Header Header" role="banner">
 		<div class="Header_Logo">
 			<a href="<?php echo home_url() ?>">
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
