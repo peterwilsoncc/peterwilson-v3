@@ -12,7 +12,17 @@ get_header();
 ?>
 <div class="Page_SectionLead">
 </div>
-<main class="Page_Main Main">
+<?php
+$main_classes = [ 'Page_Main', 'Main' ];
+if ( is_active_sidebar( 'sidebar-1' ) ) {
+	$main_classes[] = 'has-Sidebar';
+}
+?>
+<main class="<?php echo implode( ' ', array_map( 'sanitize_html_class', $main_classes ) ) ?>">
+	<div class="Main_Body">
+
+	</div>
+	<?php get_sidebar(); ?>
 </main>
 <?php
 get_footer();
