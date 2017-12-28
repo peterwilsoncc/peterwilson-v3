@@ -1,0 +1,26 @@
+.Main {
+	display: grid;
+	grid-template-columns: auto minmax( 0, 360px );
+	grid-template-rows: min-content min-content;
+	grid-template-areas:
+		"Main_Lead Main_Lead"
+		"Main_Body Main_Body";
+}
+
+.Main.has-Sidebar {
+	grid-template-areas:
+		"Main_Lead Main_Lead"
+		"Main_Body Main_Sidebar";
+}
+
+.Main_Lead {
+	grid-area: Main_Lead;
+}
+
+.Main_Body {
+	grid-area: Main_Body;
+}
+
+.Main_Sidebar {
+	grid-area: Main_Sidebar;
+}
