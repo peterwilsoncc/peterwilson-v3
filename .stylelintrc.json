@@ -3,6 +3,7 @@
 		"stylelint-config-wordpress/scss"
 	],
 	"rules": {
+		"declaration-block-no-redundant-longhand-properties": null,
 		"declaration-property-unit-whitelist": {
 			"line-height": []
 		},
