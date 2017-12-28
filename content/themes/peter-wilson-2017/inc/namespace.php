@@ -19,6 +19,7 @@ function bootstrap() {
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 	add_action( 'wp_resource_hints', __NAMESPACE__ . '\\webfonts_set_two', 10, 2 );
+	add_action( 'widgets_init', __NAMESPACE__ . '\\setup_widgetized_areas' );
 	setup_theme_support();
 	setup_theme_menus();
 	set_content_width();
@@ -140,6 +141,40 @@ function setup_theme_menus() {
 		'footer' => __( 'Footer site map.', 'pwcc' ),
 	] );
 }
+
+/**
+ * Add support for native WordPress widgets.
+ *
+ * Runs on the `widgets_init` hook.
+ *
+ * Registers two widgetized areas:
+ * - sidebar-1: the sole sidebar
+ * - footer-1: the footer area.
+ */
+function setup_widgetized_areas() {
+	/* Sidebar */
+	register_sidebar( [
+		'name'          => __( 'Sidebar', 'pwcc' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Sits along the right of the blog.', 'pwcc' ),
+		'before_widget' => '<div id="%1$s" class="Widget Widget-Sidebar1 Widget-%2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="Widget_Title">',
+		'after_title'   => '</h2>',
+	] );
+
+	/* Footer */
+	register_sidebar( [
+		'name'          => __( 'Footer', 'pwcc' ),
+		'id'            => 'footer-1',
+		'description'   => __( 'Displayed in the footer of all pages.', 'pwcc' ),
+		'before_widget' => '<div id="%1$s" class="Widget Widget-Footer1 Widget-%2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="Widget_Title">',
+		'after_title'   => '</h2>',
+	] );
+}
+
 
 /**
  * Set the content width of the theme.
