@@ -8,7 +8,7 @@
 
 		css.type = 'text/css';
 		css.rel = 'stylesheet';
-		css.href = 'https://fonts.googleapis.com/css?family=Roboto+Mono:400i,700,700i|Roboto:400i,500,500i,700,700i';
+		css.href = 'https://fonts.googleapis.com/css?family=Roboto+Mono:300,400i,700,700i|Roboto:400i,500,500i,700,700i';
 
 		document.head.appendChild( css );
 
@@ -46,6 +46,10 @@
 						weight: 700,
 						style: 'italic',
 					},
+				},
+				{
+					name: 'Roboto Mono',
+					config: { weight: 300 },
 				},
 				{
 					name: 'Roboto Mono',

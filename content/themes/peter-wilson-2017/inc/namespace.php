@@ -80,7 +80,7 @@ function webfonts_set_two( $hints, $method ) {
 	}
 
 	$font_set_two = [
-		'family' => 'Roboto+Mono:400i,700,700i|Roboto:400i,500,500i,700,700i',
+		'family' => 'Roboto+Mono:300,400i,700,700i|Roboto:400i,500,500i,700,700i',
 	];
 
 	$font_set_two_url = add_query_arg(
