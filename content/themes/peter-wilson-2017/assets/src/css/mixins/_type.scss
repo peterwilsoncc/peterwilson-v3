@@ -1,0 +1,9 @@
+@mixin type-monospace() {
+	font-family: "Courier New", monospace;
+	letter-spacing: normal;
+
+	.has-WebFonts-Stage1 & {
+		font-family: "Roboto Mono", monospace;
+		letter-spacing: normal;
+	}
+}

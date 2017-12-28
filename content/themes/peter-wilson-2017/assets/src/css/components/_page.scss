@@ -1,7 +1,7 @@
 .Page {
 	display: grid;
 	width: 100vw;
-	grid-template-columns: auto minmax( 0, 1200px ) auto;
+	grid-template-columns: 1fr minmax( 0, 1200px ) 1fr;
 	grid-template-rows: min-content min-content 1fr min-content min-content;
 	grid-template-areas:
 		". Header ."
@@ -17,6 +17,7 @@
 
 .Page_SectionLead {
 	grid-area: SectionLead;
+	background-color: $aubergine-purple;
 }
 
 .Page_Main {

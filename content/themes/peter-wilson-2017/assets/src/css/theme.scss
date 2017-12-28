@@ -1,6 +1,13 @@
 @import "vars";
 
 /*
+ * Mixins, etc
+ *
+ * Import alphabetically.
+ */
+@import "mixins/type";
+
+/*
  * Base setup.
  */
 @import "base/normalize";
@@ -16,3 +23,4 @@
 @import "components/logo";
 @import "components/main";
 @import "components/page";
+@import "components/pageHeader";
