@@ -20,6 +20,7 @@ function bootstrap() {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 	add_action( 'wp_resource_hints', __NAMESPACE__ . '\\webfonts_set_two', 10, 2 );
 	add_action( 'widgets_init', __NAMESPACE__ . '\\setup_widgetized_areas' );
+	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes', 10, 2 );
 	setup_theme_support();
 	setup_theme_menus();
 	set_content_width();
@@ -192,6 +193,29 @@ function set_content_width() {
 	}
 
 	$GLOBALS['content_width'] = $content_width;
+}
+
+/**
+ * Modify classes used in the body tag.
+ *
+ * Runs on the `body_class` filter.
+ *
+ * @param array $classes        HTML classes for body tag.
+ * @param array $custom_classes Custom classes passed with calling.
+ * @return array Modified HTML classes.
+ */
+function body_classes( array $classes, array $custom_classes ) {
+	/*
+	 * WordPress adds a number of classes that are more complicated
+	 * than they need to be. We only need a couple.
+	 */
+	if ( is_singular() ) {
+		$classes[] = 't-Singular';
+	} else {
+		$classes[] = 't-List';
+	}
+
+	return (array) $classes;
 }
 
 /**
