@@ -20,7 +20,17 @@ have_posts() && the_post();
 ?>
 <div class="Page_SectionLead">
 </div>
-<main <?php post_class( 'Page_Main Main Article' ); ?>>
+<?php
+$custom_post_classes = [
+	'Page_Main',
+	'Main',
+	'Article',
+];
+if ( is_active_sidebar( 'sidebar-1' ) ) {
+	$custom_post_classes[] = 'has-Sidebar';
+}
+?>
+<main <?php post_class( $custom_post_classes ); ?>>
 	<div class="Main_Lead Article_Lead">
 		<h1 class="Headline entry-title">
 			<?php the_title(); ?>
