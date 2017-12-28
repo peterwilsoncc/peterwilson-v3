@@ -13,7 +13,7 @@
 		document.head.appendChild( css );
 
 		const configSetTwo = {
-			htmlClass: 'has-WebFonts-Stage1',
+			htmlClass: 'has-WebFonts-Stage2',
 			/* eslint-disable key-spacing, indent */
 			// @codingStandardsIgnoreStart
 			// What a shit show start.
