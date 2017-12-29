@@ -21,6 +21,14 @@ get_header();
 			single_post_title();
 			echo '</p>';
 			break;
+		case is_front_page() :
+			// Names are names, they don't translate.
+			?>
+			<p class="SectionHeading">
+				Peter Wilson
+			</p>
+			<?php
+			break;
 	}
 	?>
 </div>
