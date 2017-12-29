@@ -19,7 +19,7 @@ get_header();
 have_posts() && the_post();
 ?>
 <div class="Page_SectionLead">
-	<p class="PageHeader"><?php esc_html_e( 'Blog', 'pwcc' ) ?></p>
+	<p class="SectionHeading"><?php esc_html_e( 'Blog', 'pwcc' ) ?></p>
 </div>
 <?php
 $custom_post_classes = [

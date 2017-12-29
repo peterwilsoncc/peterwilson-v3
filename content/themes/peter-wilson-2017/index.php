@@ -14,10 +14,10 @@ get_header();
 	<?php
 	switch ( true ) {
 		case is_archive() :
-			the_archive_title( '<h1 class="PageHeader">', '</h1>' );
+			the_archive_title( '<h1 class="SectionHeading">', '</h1>' );
 			break;
 		case is_home() && ! is_front_page() :
-			echo '<p class="PageHeader">';
+			echo '<p class="SectionHeading">';
 			single_post_title();
 			echo '</p>';
 			break;
