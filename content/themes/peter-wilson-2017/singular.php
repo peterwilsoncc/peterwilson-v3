@@ -19,7 +19,17 @@ get_header();
 have_posts() && the_post();
 ?>
 <div class="Page_SectionLead">
-	<p class="SectionHeading"><?php esc_html_e( 'Blog', 'pwcc' ) ?></p>
+	<?php
+	if ( is_singular( 'post' ) ) :
+		?>
+		<p class="SectionHeading"><?php esc_html_e( 'Blog', 'pwcc' ) ?></p>
+		<?php
+	else :
+		?>
+		<h1 class="SectionHeading entry-title"><?php single_post_title() ?></h1>
+		<?php
+	endif;
+	?>
 </div>
 <?php
 $custom_post_classes = [
@@ -33,9 +43,15 @@ if ( is_active_sidebar( 'sidebar-1' ) ) {
 ?>
 <main <?php post_class( $custom_post_classes ); ?>>
 	<div class="Main_Lead Article_Lead">
-		<h1 class="Headline entry-title">
-			<?php the_title(); ?>
-		</h1>
+		<?php
+		if ( is_singular( 'post' ) ) :
+			?>
+			<h1 class="Headline entry-title">
+				<?php single_post_title(); ?>
+			</h1>
+			<?php
+		endif;
+		?>
 	</div>
 	<div class="Main_Body Article_Body entry-content">
 		<?php the_content(); ?>
