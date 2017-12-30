@@ -17,6 +17,7 @@ $hm_mu_plugins = [
 	'vendor/extended-cpts/extended-cpts.php',
 	'vendor/extended-template-parts/extended-template-parts.php',
 	'vendor/private/loader.php',
+	'pwcc-whitelist-html/plugin.php',
 ];
 
 foreach ( $hm_mu_plugins as $k => $file ) {
