@@ -40,6 +40,12 @@ if ( is_active_sidebar( 'sidebar-1' ) ) {
 ?>
 <main class="<?php echo implode( ' ', array_map( 'sanitize_html_class', $main_classes ) ) ?>">
 	<div class="Main_Body">
+		<?php
+		while ( have_posts() ) :
+			the_post();
+			get_extended_template_part( 'post/content', get_post_format() );
+		endwhile;
+		?>
 
 	</div>
 	<?php get_sidebar(); ?>

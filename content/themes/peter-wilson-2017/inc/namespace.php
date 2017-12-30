@@ -8,6 +8,8 @@
 
 namespace PWCC\PeterWilson2017;
 
+use PWCC\WhiteListHTML;
+
 /**
  * Bootstrap the theme.
  *
@@ -20,10 +22,15 @@ function bootstrap() {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 	add_action( 'wp_resource_hints', __NAMESPACE__ . '\\webfonts_set_two', 10, 2 );
 	add_action( 'widgets_init', __NAMESPACE__ . '\\setup_widgetized_areas' );
-	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes', 10, 2 );
 	setup_theme_support();
 	setup_theme_menus();
 	set_content_width();
+
+	// Manipulate body class.
+	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes', 10, 2 );
+
+	// Manipulate post display.
+	add_filter( 'excerpt_more', __NAMESPACE__ . '\\excerpt_more' );
 }
 
 /**
@@ -251,4 +258,37 @@ function disable_theme_checks( array $args, string $url ) {
 	$args['body']['themes'] = wp_json_encode( $themes );
 
 	return $args;
+}
+
+/**
+ * Modify the continue reading link displayed on excerpts.
+ *
+ * Runs on the filter `excerpt_more`.
+ *
+ * Props: twentyseventeen core theme.
+ *
+ * @param string $more_link Continue reading link displayed for excerpts.
+ * @return string Modified continue reading link.
+ */
+function excerpt_more( string $more_link ) {
+	if ( is_admin() ) {
+		return $more_link;
+	}
+
+	$more_link = sprintf(
+		'<span class="link-more"><a href="%1$s" class="more-link">%2$s</a></span>',
+		esc_url( get_permalink() ),
+		/* translators: %s: Name of current post */
+		sprintf(
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'pwcc' ),
+			get_the_title()
+		)
+	);
+
+	/*
+	 * Trust no one, not me, not translators.
+	 *
+	 * Limits allowed tags to those used in the translation.
+	 */
+	return '&hellip; ' . WhiteListHTML\get_whitelist_html( $more_link, 'a, span', 'post' );
 }
