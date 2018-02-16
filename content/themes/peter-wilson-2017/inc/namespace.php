@@ -226,6 +226,29 @@ function body_classes( array $classes, array $custom_classes ) {
 }
 
 /**
+ * Calculates HTML class for the sidebar state.
+ *
+ * @return string The HTML class: either an empty string or `has-Sidebar`.
+ */
+function get_sidebar_state_class() {
+	$sidebar_class = '';
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+		$sidebar_class  = 'has-Sidebar';
+	}
+
+	return sanitize_html_class( $sidebar_class );
+}
+
+/**
+ * Echo the HTML class for the sidebar state.
+ *
+ * @see get_sidebar_state_class().
+ */
+function the_sidebar_state_class() {
+	echo get_sidebar_state_class();
+}
+
+/**
  * Handles JavaScript detection.
  *
  * Adds a `js` class to the root `<html>` element when JavaScript is detected.
