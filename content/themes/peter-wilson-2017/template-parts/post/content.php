@@ -12,13 +12,13 @@
 	<?php
 	if ( is_singular() && get_the_title() ) :
 		?>
-		<h1 class="Headline entry-title">
+		<h1 class="Headline Headline-Singular entry-title">
 			<?php the_title(); ?>
 		</h1>
 		<?php
 	elseif ( ! is_singular() && get_the_title() ) :
 		?>
-		<h2 class="Headline entry-title">
+		<h2 class="Headline Headline-Listing entry-title">
 			<a href="<?php the_permalink() ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>

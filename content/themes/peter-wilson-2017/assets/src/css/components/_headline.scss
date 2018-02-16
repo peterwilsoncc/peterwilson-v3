@@ -1,0 +1,26 @@
+.Headline {
+	color: $aubergine-purple;
+	font-size: 3.75rem; /* 60px */
+	line-height: 1.2; /* 72px */
+	font-weight: normal;
+
+	@include type-monospace();
+}
+
+.Headline-Listing {
+	font-size: 1.875rem; /* 30px */
+	line-height: 1.2666666667 /* 38px */
+}
+
+.Headline > a,
+.Headline > a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+.Headline > a:hover,
+.Headline > a:focus,
+.Headline > a:active {
+	color: $geranium-red;
+	text-decoration: underline;
+}
