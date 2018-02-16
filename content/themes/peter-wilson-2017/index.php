@@ -34,12 +34,14 @@ get_header();
 </div>
 <?php
 $main_classes = [ 'Page_Main', 'Main' ];
+
 if ( is_active_sidebar( 'sidebar-1' ) ) {
-	$main_classes[] = 'has-Sidebar';
+	$sidebar_class  = 'has-Sidebar';
+	$main_classes[] = $sidebar_class;
 }
 ?>
 <main class="<?php echo implode( ' ', array_map( 'sanitize_html_class', $main_classes ) ) ?>">
-	<div class="Main_Body">
+	<div class="Main_Body <?php echo sanitize_html_class( $sidebar_class ) ?>">
 		<?php
 		while ( have_posts() ) :
 			the_post();

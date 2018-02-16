@@ -32,32 +32,38 @@ have_posts() && the_post();
 	?>
 </div>
 <?php
-$custom_post_classes = [
+$main_classes = [
 	'Page_Main',
 	'Main',
-	'Article',
+	'',
 ];
+
+$sidebar_class = '';
+
 if ( is_active_sidebar( 'sidebar-1' ) ) {
-	$custom_post_classes[] = 'has-Sidebar';
+	$sidebar_class  = 'has-Sidebar';
+	$main_classes[] = $sidebar_class;
 }
 ?>
-<main <?php post_class( $custom_post_classes ); ?>>
-	<div class="Main_Lead Article_Lead">
-		<?php
-		if ( is_singular( 'post' ) ) :
-			?>
-			<h1 class="Headline entry-title">
-				<?php single_post_title(); ?>
-			</h1>
+<div class="<?php echo implode( ' ', array_map( 'sanitize_html_class', $main_classes ) ) ?>">
+	<main <?php post_class( 'Article' ); ?>>
+		<div class="Main_Lead Article_Lead <?php echo sanitize_html_class( $sidebar_class ) ?>">
 			<?php
-		endif;
-		?>
-	</div>
-	<div class="Main_Body Article_Body entry-content">
-		<?php the_content(); ?>
-	</div>
+			if ( is_singular( 'post' ) ) :
+				?>
+				<h1 class="Headline entry-title">
+					<?php single_post_title(); ?>
+				</h1>
+				<?php
+			endif;
+			?>
+		</div>
+		<div class="Main_Body Article_Body entry-content <?php echo sanitize_html_class( $sidebar_class ) ?>">
+			<?php the_content(); ?>
+		</div>
+	</main>
 	<?php get_sidebar(); ?>
-</main>
+</div>
 <div class="Page_SectionFollow">
 </div>
 <?php

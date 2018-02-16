@@ -1,28 +1,22 @@
 .Main {
-	display: grid;
-	grid-template-columns: auto minmax( 0, 360px );
-	grid-template-rows: min-content min-content;
-	grid-template-areas:
-		"Main_Lead Main_Lead"
-		"Main_Body Main_Body";
+	// TODO: Change this to use CSS-Grid once `display: contents` is supported.
 	padding-left: 20px;
 	padding-right: 20px;
 }
 
-.Main.has-Sidebar {
-	grid-template-areas:
-		"Main_Lead Main_Lead"
-		"Main_Body Main_Sidebar";
-}
+@media ( min-width: 45em ) {
+	.Main.has-Sidebar::after {
 
-.Main_Lead {
-	grid-area: Main_Lead;
-}
+		@include clearfix();
+	}
 
-.Main_Body {
-	grid-area: Main_Body;
-}
+	.Main_Body.has-Sidebar {
+		float: left;
+		width: calc( 100% - 22.5em );
+	}
 
-.Main_Sidebar {
-	grid-area: Main_Sidebar;
+	.Main_Sidebar {
+		float: right;
+		width: 22.5em;
+	}
 }
