@@ -65,7 +65,28 @@ module.exports = function ( grunt ) {
 					2: {
 						mergeSemantically: true,
 						restructureRules: true
-					}
+					},
+				},
+				format: {
+					breaks: { // controls where to insert breaks
+						afterAtRule     : true, // controls if a line break comes after an at-rule; e.g. `@charset`; defaults to `false`
+						afterBlockBegins: true, // controls if a line break comes after a block begins; e.g. `@media`; defaults to `false`
+						afterBlockEnds  : true, // controls if a line break comes after a block ends, defaults to `false`
+						afterComment    : true, // controls if a line break comes after a comment; defaults to `false`
+						afterProperty   : true, // controls if a line break comes after a property; defaults to `false`
+						afterRuleBegins : true, // controls if a line break comes after a rule begins; defaults to `false`
+						afterRuleEnds   : true, // controls if a line break comes after a rule ends; defaults to `false`
+						beforeBlockEnds : true, // controls if a line break comes before a block ends; defaults to `false`
+						betweenSelectors: true // controls if a line break comes between selectors; defaults to `false`
+					},
+					indentBy: 0, // controls number of characters to indent with; defaults to `0`
+					indentWith: 'space', // controls a character to indent with, can be `'space'` or `'tab'`; defaults to `'space'`
+					spaces: { // controls where to insert spaces
+						aroundSelectorRelation: false, // controls if spaces come around selector relations; e.g. `div > a`; defaults to `false`
+						beforeBlockBegins: false, // controls if a space comes before a block begins; e.g. `.block {`; defaults to `false`
+						beforeValue: false // controls if a space comes before a value; e.g. `width: 1rem`; defaults to `false`
+					},
+					wrapAt: false // controls maximum line length; defaults to `false`
 				},
 				sourceMap: true,
 				mergeIntoShorthands: false,
