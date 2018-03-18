@@ -21,6 +21,7 @@
  *
  * Components should be listed in alphabetical order.
  */
+@import "components/entryMeta";
 @import "components/header";
 @import "components/headline";
 @import "components/logo";
@@ -34,3 +35,4 @@
  * Core helper classes used by WordPress
  */
 @import "wordpress/default-classes";
+@import "wordpress/post-categories";

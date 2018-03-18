@@ -42,7 +42,7 @@ $main_classes = [ 'Page_Main', 'Main', PeterWilson2017\get_sidebar_state_class()
 		<?php
 		while ( have_posts() ) :
 			the_post();
-			get_extended_template_part( 'post/content', get_post_format() );
+			get_extended_template_part( 'post/content-list', get_post_format() );
 		endwhile;
 		?>
 

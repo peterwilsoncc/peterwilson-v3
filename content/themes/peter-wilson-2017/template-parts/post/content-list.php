@@ -1,6 +1,6 @@
 <?php
 /**
- * Generic content file for posts.
+ * Generic content file for posts on list style pages.
  *
  * @package   peterwilson-2017
  * @author    Peter Wilson <wilson@peterwilson.cc>
@@ -8,15 +8,9 @@
  * @license   GPLv2
  */
 ?>
-<article <?php post_class( 'Article' ) ?>>
+<article <?php post_class( 'Article Article-List' ) ?>>
 	<?php
-	if ( is_singular() && get_the_title() ) :
-		?>
-		<h1 class="Headline Headline-Singular entry-title">
-			<?php the_title(); ?>
-		</h1>
-		<?php
-	elseif ( ! is_singular() && get_the_title() ) :
+	if ( get_the_title() ) :
 		?>
 		<h2 class="Headline Headline-Listing entry-title">
 			<a href="<?php the_permalink() ?>" rel="bookmark">
@@ -26,13 +20,13 @@
 		<?php
 	endif;
 	?>
-	<div class="EntryMeta">
+	<div class="EntryMeta EntryMeta-List">
 		<time class="entry-date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ) ?>">
 			<?php the_time( get_option( 'date_format' ) ) ?>
 		</time>
 	</div>
 	<?php the_excerpt() ?>
-	<div class="EntryMeta EntryMeta-Footer">
+	<div class="EntryMeta EntryMeta-Footer EntryMeta-List">
 		<?php the_category() ?>
 	</div>
 </article>

@@ -1,0 +1,22 @@
+.EntryMeta {
+	color: $storm-grey;
+	font-weight: 500;
+	font-size: 1.25rem;
+	line-height: 1.5;
+}
+
+.EntryMeta-List {
+	font-size: 0.875rem;
+	line-height: 1.6428571429;
+}
+
+.EntryMeta a,
+.EntryMeta a:visited {
+	color: $aubergine-purple;
+	text-decoration: none;
+}
+
+.EntryMeta a:hover,
+.EntryMeta a:focus {
+	text-decoration: underline;
+}

@@ -299,7 +299,7 @@ function excerpt_more( string $more_link ) {
 	}
 
 	$more_link = sprintf(
-		'<span class="link-more"><a href="%1$s" class="more-link">%2$s</a></span>',
+		'<span class="link-more"><a href="%1$s" class="more-link" rel="bookmark">%2$s</a></span>',
 		esc_url( get_permalink() ),
 		/* translators: %s: Name of current post */
 		sprintf(
