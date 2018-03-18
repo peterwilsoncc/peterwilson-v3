@@ -19,6 +19,8 @@ if ( file_exists( '/vagrant/local-config-db.php' ) ) {
 if ( file_exists( __DIR__ . '/local-config.php' ) ) {
 	defined( 'WP_LOCAL_DEV' ) or define( 'WP_LOCAL_DEV', true );
 	include( __DIR__ . '/local-config.php' );
+} elseif ( file_exists( __DIR__ . '/production-config.php' ) ) {
+	include( __DIR__ . '/production-config.php' );
 } elseif ( ! defined( 'WP_LOCAL_DEV' ) && getenv( 'DB_NAME' ) ) {
 	define( 'WP_LOCAL_DEV', false );
 	define( 'DB_NAME', getenv( 'DB_NAME' ) );

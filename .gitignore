@@ -4,3 +4,4 @@
 /content/debug.log
 /node_modules
 content/themes/peter-wilson-2017/assets/dist
+/production-config.php
