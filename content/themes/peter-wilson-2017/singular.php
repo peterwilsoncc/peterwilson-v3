@@ -24,11 +24,11 @@ have_posts() && the_post();
 	<?php
 	if ( is_singular( 'post' ) ) :
 		?>
-		<p class="SectionHeading"><?php esc_html_e( 'Blog', 'pwcc' ) ?></p>
+		<p class="SectionHeading"><?php esc_html_e( 'Blog', 'pwcc' ); ?></p>
 		<?php
 	else :
 		?>
-		<h1 class="SectionHeading entry-title"><?php single_post_title() ?></h1>
+		<h1 class="SectionHeading entry-title"><?php single_post_title(); ?></h1>
 		<?php
 	endif;
 	?>
@@ -40,9 +40,9 @@ $main_classes = [
 	PeterWilson2017\get_sidebar_state_class(),
 ];
 ?>
-<div class="<?php echo implode( ' ', array_map( 'sanitize_html_class', $main_classes ) ) ?>">
+<div class="<?php echo implode( ' ', array_map( 'sanitize_html_class', $main_classes ) ); ?>">
 	<main <?php post_class( 'Article' ); ?>>
-		<div class="Main_Lead Article_Lead <?php PeterWilson2017\the_sidebar_state_class() ?>">
+		<div class="Main_Lead Article_Lead <?php PeterWilson2017\the_sidebar_state_class(); ?>">
 			<?php
 			if ( is_singular( 'post' ) ) :
 				?>
@@ -53,7 +53,7 @@ $main_classes = [
 			endif;
 			?>
 		</div>
-		<div class="Main_Body Article_Body entry-content <?php PeterWilson2017\the_sidebar_state_class() ?>">
+		<div class="Main_Body Article_Body entry-content <?php PeterWilson2017\the_sidebar_state_class(); ?>">
 			<?php the_content(); ?>
 		</div>
 	</main>

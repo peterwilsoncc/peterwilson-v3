@@ -22,7 +22,7 @@
 <div class="Page">
 	<header class="Page_Header Header" role="banner">
 		<div class="Header_Logo">
-			<a href="<?php echo home_url() ?>">
+			<a href="<?php echo home_url(); ?>">
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
 					x="0" y="0" viewBox="0 0 160 160"
 					enable-background="new 0 0 160 160"

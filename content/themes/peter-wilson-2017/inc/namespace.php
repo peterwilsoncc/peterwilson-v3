@@ -299,6 +299,7 @@ function excerpt_more( string $more_link ) {
 	}
 
 	$more_link = sprintf(
+		/* translators: %1$s: Link to current post, %2$s text of link. */
 		'<span class="link-more"><a href="%1$s" class="more-link" rel="bookmark">%2$s</a></span>',
 		esc_url( get_permalink() ),
 		/* translators: %s: Name of current post */
