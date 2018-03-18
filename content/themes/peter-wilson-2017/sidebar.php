@@ -11,7 +11,7 @@
 if ( is_active_sidebar( 'sidebar-1' ) ) :
 	?>
 	<aside class="Main_Sidebar">
-		<?php dynamic_sidebar( 'sidebar-1' ) ?>
+		<?php dynamic_sidebar( 'sidebar-1' ); ?>
 	</aside>
 	<?php
 endif;
