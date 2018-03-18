@@ -5,3 +5,4 @@
 /node_modules
 content/themes/peter-wilson-2017/assets/css/**/*.css
 content/themes/peter-wilson-2017/assets/css/**/*.css.map
+/production-config.php
