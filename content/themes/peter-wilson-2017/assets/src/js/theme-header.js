@@ -28,9 +28,9 @@ const FontFaceObserver = require( '../../../../../../node_modules/fontfaceobserv
 		htmlClass: 'has-WebFonts-Stage1',
 		// eslint-disable-next-line key-spacing
 		fonts: [
-			{ name: 'Roboto', config: {}},
-			{ name: 'Roboto Mono', config: {}},
-			{ name: 'Roboto Slab', config: { weight: 700 }},
+			{ name: 'Roboto', config: {} },
+			{ name: 'Roboto Mono', config: {} },
+			{ name: 'Roboto Slab', config: { weight: 700 } },
 		],
 	};
 
