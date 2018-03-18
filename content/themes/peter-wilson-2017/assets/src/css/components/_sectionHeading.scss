@@ -1,0 +1,16 @@
+.SectionHeading {
+	color: $white;
+
+	font-size: 3.1875rem;
+	font-weight: 300;
+	line-height: 1.4117647059;
+	max-width: 1200px;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	@include type-monospace();
+}

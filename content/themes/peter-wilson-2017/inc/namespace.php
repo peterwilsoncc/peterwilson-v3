@@ -8,6 +8,8 @@
 
 namespace PWCC\PeterWilson2017;
 
+use PWCC\WhiteListHTML;
+
 /**
  * Bootstrap the theme.
  *
@@ -18,8 +20,17 @@ function bootstrap() {
 	add_action( 'wp_head', __NAMESPACE__ . '\\javascript_detection', 0 );
 	add_filter( 'http_request_args', __NAMESPACE__ . '\\disable_theme_checks', 10, 2 );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
+	add_action( 'wp_resource_hints', __NAMESPACE__ . '\\webfonts_set_two', 10, 2 );
+	add_action( 'widgets_init', __NAMESPACE__ . '\\setup_widgetized_areas' );
 	setup_theme_support();
+	setup_theme_menus();
 	set_content_width();
+
+	// Manipulate body class.
+	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes', 10, 2 );
+
+	// Manipulate post display.
+	add_filter( 'excerpt_more', __NAMESPACE__ . '\\excerpt_more' );
 }
 
 /**
@@ -28,13 +39,70 @@ function bootstrap() {
 function enqueue_assets() {
 	$suffix = SCRIPT_DEBUG ? '' : '.min';
 
+	wp_enqueue_style(
+		'peter-wilson-2017-gfonts-1',
+		'https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Roboto+Slab:700',
+		[],
+		null
+	);
+
 	// Let's get some style.
 	wp_enqueue_style(
 		'peter-wilson-2017-theme',
-		get_stylesheet_directory_uri() . "/assets/css/theme{$suffix}.css",
+		get_stylesheet_directory_uri() . "/assets/dist/css/theme{$suffix}.css",
 		[],
 		wp_get_theme()->get( 'Version' )
 	);
+
+	// Load the header script.
+	wp_enqueue_script(
+		'peter-wilson-2017-theme-header',
+		get_stylesheet_directory_uri() . "/assets/dist/js/theme-header{$suffix}.js",
+		[],
+		wp_get_theme()->get( 'Version' )
+	);
+
+	// Load the footer script.
+	wp_enqueue_script(
+		'peter-wilson-2017-theme-footer',
+		get_stylesheet_directory_uri() . "/assets/dist/js/theme-footer{$suffix}.js",
+		[],
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+}
+
+/**
+ * Add second stage web fonts to prefetch header.
+ *
+ * Runs on `wp_resource_hints, 10`.
+ *
+ * @param array  $urls   URLs to print for resource hints.
+ * @param string $method The relation type the URLs are printed for, e.g. 'preconnect' or 'prerender'.
+ * @return array URLS to print for resource hints.
+ */
+function webfonts_set_two( $hints, $method ) {
+	if ( 'prefetch' !== $method ) {
+		return $hints;
+	}
+
+	$font_set_two = [
+		'family' => 'Roboto+Mono:300,400i,700,700i|Roboto:400i,500,500i,700,700i',
+	];
+
+	$font_set_two_url = add_query_arg(
+		$font_set_two,
+		'https://fonts.googleapis.com/css'
+	);
+
+	$hints[] = [
+		'crossorigin',
+		'as'   => 'style',
+		'pr'   => 1.0,
+		'href' => $font_set_two_url,
+	];
+
+	return $hints;
 }
 
 /**
@@ -70,6 +138,53 @@ function setup_theme_support() {
 }
 
 /**
+ * Add support for native WordPress menus.
+ *
+ * Registers two menu locations, the primary and stiemap menu. The IDs come
+ * from the faux
+ */
+function setup_theme_menus() {
+	register_nav_menus( [
+		'header' => __( 'Primary menu (header).', 'pwcc' ),
+		'footer' => __( 'Footer site map.', 'pwcc' ),
+	] );
+}
+
+/**
+ * Add support for native WordPress widgets.
+ *
+ * Runs on the `widgets_init` hook.
+ *
+ * Registers two widgetized areas:
+ * - sidebar-1: the sole sidebar
+ * - footer-1: the footer area.
+ */
+function setup_widgetized_areas() {
+	/* Sidebar */
+	register_sidebar( [
+		'name'          => __( 'Sidebar', 'pwcc' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Sits along the right of the blog.', 'pwcc' ),
+		'before_widget' => '<div id="%1$s" class="Widget Widget-Sidebar1 Widget-%2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="Widget_Title">',
+		'after_title'   => '</h2>',
+	] );
+
+	/* Footer */
+	register_sidebar( [
+		'name'          => __( 'Footer', 'pwcc' ),
+		'id'            => 'footer-1',
+		'description'   => __( 'Displayed in the footer of all pages.', 'pwcc' ),
+		'before_widget' => '<div id="%1$s" class="Widget Widget-Footer1 Widget-%2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="Widget_Title">',
+		'after_title'   => '</h2>',
+	] );
+}
+
+
+/**
  * Set the content width of the theme.
  *
  * WordPress™ requires this and sure, why not.
@@ -85,6 +200,52 @@ function set_content_width() {
 	}
 
 	$GLOBALS['content_width'] = $content_width;
+}
+
+/**
+ * Modify classes used in the body tag.
+ *
+ * Runs on the `body_class` filter.
+ *
+ * @param array $classes        HTML classes for body tag.
+ * @param array $custom_classes Custom classes passed with calling.
+ * @return array Modified HTML classes.
+ */
+function body_classes( array $classes, array $custom_classes ) {
+	/*
+	 * WordPress adds a number of classes that are more complicated
+	 * than they need to be. We only need a couple.
+	 */
+	if ( is_singular() ) {
+		$classes[] = 't-Singular';
+	} else {
+		$classes[] = 't-List';
+	}
+
+	return (array) $classes;
+}
+
+/**
+ * Calculates HTML class for the sidebar state.
+ *
+ * @return string The HTML class: either an empty string or `has-Sidebar`.
+ */
+function get_sidebar_state_class() {
+	$sidebar_class = '';
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+		$sidebar_class  = 'has-Sidebar';
+	}
+
+	return sanitize_html_class( $sidebar_class );
+}
+
+/**
+ * Echo the HTML class for the sidebar state.
+ *
+ * @see get_sidebar_state_class().
+ */
+function the_sidebar_state_class() {
+	echo get_sidebar_state_class();
 }
 
 /**
@@ -120,4 +281,38 @@ function disable_theme_checks( array $args, string $url ) {
 	$args['body']['themes'] = wp_json_encode( $themes );
 
 	return $args;
+}
+
+/**
+ * Modify the continue reading link displayed on excerpts.
+ *
+ * Runs on the filter `excerpt_more`.
+ *
+ * Props: twentyseventeen core theme.
+ *
+ * @param string $more_link Continue reading link displayed for excerpts.
+ * @return string Modified continue reading link.
+ */
+function excerpt_more( string $more_link ) {
+	if ( is_admin() ) {
+		return $more_link;
+	}
+
+	$more_link = sprintf(
+		/* translators: %1$s: Link to current post, %2$s text of link. */
+		'<span class="link-more"><a href="%1$s" class="more-link" rel="bookmark">%2$s</a></span>',
+		esc_url( get_permalink() ),
+		sprintf(
+			/* translators: %s: Name of current post */
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'pwcc' ),
+			get_the_title()
+		)
+	);
+
+	/*
+	 * Trust no one, not me, not translators.
+	 *
+	 * Limits allowed tags to those used in the translation.
+	 */
+	return '&hellip; ' . WhiteListHTML\get_whitelist_html( $more_link, 'a, span', 'post' );
 }

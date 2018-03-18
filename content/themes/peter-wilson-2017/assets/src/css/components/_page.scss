@@ -1,0 +1,33 @@
+.Page {
+	display: grid;
+	width: 100vw;
+	grid-template-columns: 1fr minmax( 0, 1200px ) 1fr;
+	grid-template-rows: min-content min-content 1fr min-content min-content;
+	grid-template-areas:
+		". Header ."
+		"SectionLead SectionLead SectionLead"
+		". Main ."
+		". SectionFollow ."
+		". Footer .";
+}
+
+.Page_Header {
+	grid-area: Header;
+}
+
+.Page_SectionLead {
+	grid-area: SectionLead;
+	background-color: $aubergine-purple;
+}
+
+.Page_Main {
+	grid-area: Main;
+}
+
+.Page_SectionFollow {
+	grid-area: SectionFollow;
+}
+
+.Page_Footer {
+	grid-area: Footer;
+}

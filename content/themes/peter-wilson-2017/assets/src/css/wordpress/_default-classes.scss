@@ -1,0 +1,11 @@
+.screen-reader-text { /* stylelint-disable-line selector-class-pattern */
+	position: absolute !important;
+	margin: -1px !important;
+	padding: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden !important;
+	clip: rect( 0 0 0 0 ) !important;
+	border: 0 !important;
+	word-wrap: normal !important;
+}

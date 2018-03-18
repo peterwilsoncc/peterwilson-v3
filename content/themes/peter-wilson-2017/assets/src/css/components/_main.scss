@@ -1,0 +1,22 @@
+.Main {
+	// TODO: Change this to use CSS-Grid once `display: contents` is supported.
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+@media ( min-width: 45em ) {
+	.Main.has-Sidebar::after {
+
+		@include clearfix();
+	}
+
+	.Main_Body.has-Sidebar {
+		float: left;
+		width: calc( 100% - 22.5em );
+	}
+
+	.Main_Sidebar {
+		float: right;
+		width: 22.5em;
+	}
+}

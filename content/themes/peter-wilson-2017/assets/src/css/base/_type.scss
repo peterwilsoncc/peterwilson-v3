@@ -1,0 +1,27 @@
+body {
+	font-family: Arial, sans-serif;
+	font-size: ( 18 / 16 ) * 1em;
+	letter-spacing: 0.05px;
+	line-height: ( 30 / 18 );
+}
+
+pre,
+code,
+kbd,
+samp {
+	font-family: "Courier New", monospace;
+	letter-spacing: normal;
+}
+
+.has-WebFonts-Stage1 body {
+	font-family: Roboto, Arial, sans-serif;
+	letter-spacing: normal;
+}
+
+.has-WebFonts-Stage1 pre,
+.has-WebFonts-Stage1 code,
+.has-WebFonts-Stage1 kbd,
+.has-WebFonts-Stage1 samp {
+	font-family: "Roboto Mono", monospace;
+	letter-spacing: normal;
+}

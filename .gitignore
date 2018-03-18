@@ -3,6 +3,5 @@
 /vendor/
 /content/debug.log
 /node_modules
-content/themes/peter-wilson-2017/assets/css/**/*.css
-content/themes/peter-wilson-2017/assets/css/**/*.css.map
+content/themes/peter-wilson-2017/assets/dist
 /production-config.php

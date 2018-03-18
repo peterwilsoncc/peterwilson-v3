@@ -20,6 +20,7 @@ class Tests_Public_Git_Repos extends \WP_UnitTestCase {
 		if ( ! file_exists( $git_submodules ) ) {
 			$this->markTestSkipped( '.gitmodules does NOT exist.' );
 		}
+		// phpcs:ignore
 		$submodules = file_get_contents( $git_submodules, 'r' );
 
 		/*

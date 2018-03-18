@@ -1,0 +1,30 @@
+/* stylelint-disable selector-class-pattern  */
+.post-categories {
+	list-style: none;
+	padding-left: 0;
+}
+
+.post-categories::before {
+	display: inline-block;
+	content: " ";
+	/* stylelint-disable-next-line string-quotes */
+	background-image: url( 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M15.7 15.275L14.125 10.6 3.525 0 0 3.525l10.6 10.6 4.45 1.775c.175.075.375.025.525-.1.15-.125.2-.325.125-.525zm-5.1-2.55l-9.175-9.2L3.55 1.4l9.2 9.2-2.15 2.125zm.75.675l2.05-2.05 1.05 3.225-3.1-1.175z" fill="#{$geranium-red}"/></svg>' );
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 1em;
+	height: 1em;
+}
+
+.post-categories > li {
+	display: inline;
+}
+
+.post-categories > li + li::before {
+	display: inline;
+	content: "  /  ";
+}
+
+.post-categories a {
+	color: $geranium-red;
+}

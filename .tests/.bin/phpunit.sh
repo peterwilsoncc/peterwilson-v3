@@ -6,5 +6,5 @@ if [ -d "/chassis" ]; then
 	phpunit -c phpunit.xml
 else [ ! -d "/chassis" ]
 	echo 'Logging into vagrant...'
-	/usr/local/bin/vagrant ssh e293c73 -- -t 'cd /chassis/; sh .tests/.bin/phpunit.sh;'
+	/usr/local/bin/vagrant ssh f1577e3 -- -t 'cd /chassis/; sh .tests/.bin/phpunit.sh;'
 fi

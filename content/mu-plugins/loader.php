@@ -17,6 +17,7 @@ $hm_mu_plugins = [
 	'vendor/extended-cpts/extended-cpts.php',
 	'vendor/extended-template-parts/extended-template-parts.php',
 	'vendor/private/loader.php',
+	'pwcc-whitelist-html/plugin.php',
 ];
 
 foreach ( $hm_mu_plugins as $k => $file ) {
@@ -24,7 +25,9 @@ foreach ( $hm_mu_plugins as $k => $file ) {
 		continue;
 	}
 	$file = wp_basename( $file );
+	// phpcs:ignore
 	trigger_error(
+		/* translators: %s refers to the plugin file. */
 		sprintf( __( 'Plugin file %s does not exist' ), esc_html( $file ) ),
 		E_USER_WARNING
 	);

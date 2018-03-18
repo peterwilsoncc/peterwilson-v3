@@ -21,6 +21,13 @@ module.exports = function ( grunt ) {
 			}
 		},
 
+		buildjs: {
+			'default': {
+				cmd: 'yarn',
+				args: [ 'build:js' ]
+			}
+		},
+
 		phplint: {
 			'default': {
 				cmd: 'yarn',
@@ -51,7 +58,36 @@ module.exports = function ( grunt ) {
 
 		cssmin: {
 			options: {
-				level: 2,
+				level: {
+					1: {
+						specialComments: false
+					},
+					2: {
+						mergeSemantically: true,
+						restructureRules: true
+					},
+				},
+				format: {
+					breaks: { // controls where to insert breaks
+						afterAtRule     : true, // controls if a line break comes after an at-rule; e.g. `@charset`; defaults to `false`
+						afterBlockBegins: true, // controls if a line break comes after a block begins; e.g. `@media`; defaults to `false`
+						afterBlockEnds  : true, // controls if a line break comes after a block ends, defaults to `false`
+						afterComment    : true, // controls if a line break comes after a comment; defaults to `false`
+						afterProperty   : true, // controls if a line break comes after a property; defaults to `false`
+						afterRuleBegins : true, // controls if a line break comes after a rule begins; defaults to `false`
+						afterRuleEnds   : true, // controls if a line break comes after a rule ends; defaults to `false`
+						beforeBlockEnds : true, // controls if a line break comes before a block ends; defaults to `false`
+						betweenSelectors: true // controls if a line break comes between selectors; defaults to `false`
+					},
+					indentBy: 0, // controls number of characters to indent with; defaults to `0`
+					indentWith: 'space', // controls a character to indent with, can be `'space'` or `'tab'`; defaults to `'space'`
+					spaces: { // controls where to insert spaces
+						aroundSelectorRelation: false, // controls if spaces come around selector relations; e.g. `div > a`; defaults to `false`
+						beforeBlockBegins: false, // controls if a space comes before a block begins; e.g. `.block {`; defaults to `false`
+						beforeValue: false // controls if a space comes before a value; e.g. `width: 1rem`; defaults to `false`
+					},
+					wrapAt: false // controls maximum line length; defaults to `false`
+				},
 				sourceMap: true,
 				mergeIntoShorthands: false,
 				roundingPrecision: -1
@@ -59,9 +95,9 @@ module.exports = function ( grunt ) {
 			theme: {
 				files: [ {
 					expand: true,
-					cwd: 'content/themes/peter-wilson-2017/assets/css',
+					cwd: 'content/themes/peter-wilson-2017/assets/dist/css',
 					src: ['*.css', '!**/*.min.css'],
-					dest: 'content/themes/peter-wilson-2017/assets/css',
+					dest: 'content/themes/peter-wilson-2017/assets/dist/css',
 					ext: '.min.css'
 				} ]
 			}
@@ -77,11 +113,37 @@ module.exports = function ( grunt ) {
 				},
 				files: [ {
 					expand: true,
-					cwd: 'content/themes/peter-wilson-2017/assets/css',
+					cwd: 'content/themes/peter-wilson-2017/assets/src/css',
 					src: ['*.scss'],
-					dest: 'content/themes/peter-wilson-2017/assets/css',
+					dest: 'content/themes/peter-wilson-2017/assets/dist/css',
 					ext: '.css'
 				} ]
+			}
+		},
+
+		uglify: {
+			theme: {
+				options: {
+					sourceMap: true,
+				},
+				files: [ {
+					expand: true,
+					cwd: 'content/themes/peter-wilson-2017/assets/dist/js',
+					src: ['*.js', '!**/*.min.js'],
+					dest: 'content/themes/peter-wilson-2017/assets/dist/js',
+					ext: '.min.js'
+				} ]
+			}
+		},
+
+		watch: {
+			script: {
+				files: [ 'content/**/*.js', '!**/dist/**/*.js' ],
+				tasks: [ 'buildjs' ]
+			},
+			style: {
+				files: [ 'content/**/*.scss' ],
+				tasks: [ 'sass' ]
 			}
 		}
 	} );
@@ -90,6 +152,8 @@ module.exports = function ( grunt ) {
 	grunt.registerMultiTask( 'phpunit', 'Runs PHPUnit tests.', commonTaskCallback );
 
 	grunt.registerMultiTask( 'phplint', 'Runs PHP code sniffs.', commonTaskCallback );
+
+	grunt.registerMultiTask( 'buildjs', 'Build JS.', commonTaskCallback );
 
 	grunt.registerMultiTask( 'jslint', 'Lint JS files.', commonTaskCallback );
 
@@ -174,12 +238,17 @@ module.exports = function ( grunt ) {
 
 	// all the plugins that is needed for above tasks
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
+
+	grunt.registerTask( 'build:js', [ 'buildjs', 'uglify' ] );
 
 	grunt.registerTask( 'build:css', [ 'sass', 'cssmin' ] );
 
 	grunt.registerTask( 'build', [
-		'build:css'
+		'build:js',
+		'build:css',
 	] );
 
 	grunt.registerTask( 'precommit:js', [ 'jslint' ] );
